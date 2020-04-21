@@ -1,0 +1,12 @@
+Networking Notes (TCP/IP)----
+IPV6 iptables rules----cat /etc/iptables/rules.v6
+IPv4 iptables rules----cat /etc/iptalbes/rules.v4
+
+Wireless Configuration----
+Configure wlan0 interface----ifconfig wlan0 <ip-address>
+Start DNS/DHCP server----service dnsmasq restart
+Enable routing----sysctl net.ipv4.ip_forward=1
+Enable NAT----iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+Run access point daemon----hostapd /etc/hostapd/hostapd.conf
+
+WireShark Decrypt SSL Traffic----Create SSLKEYLOGFILE environment variable pointing to log file.  (May have to run Chrome.exe --ssl-key-log-file=C:\Temp\ssl-keys.log

@@ -1,0 +1,2 @@
+CTF-like Tools----
+Extract Data from JPG----steghide -extract -p <password> -sf <file>

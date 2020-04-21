@@ -1,0 +1,29 @@
+Open Source Intelligence----
+Whois Registration Lookup----whois domain.com
+Arin Whois----<a href="https://whois.arin.net/ui/advanced.jsp">https://whois.arin.net/ui/advanced.jsp</a>
+Wigle----Geolocate MAC Addresses of Wifi Hotspots - <a href="https://wigle.net/">https://wigle.net/</a>
+
+Photos of Commercial Buildings----<a href="http://loopnet.com">http://loopnet.com</a>
+MAC OUI Lookup----curl http://api.macvendors.com/fc-a1-3e-2a-1c-33
+
+Shodan----<a href="https://www.shodan.io/"">https://www.shodan.io/</a>
+
+Google Dorks----
+List of Subdomains without main page----site:"microsoft.com" -site:"www.microsoft.com" 
+Web Cams----inurl:"/control/userimage.html" 
+Useful Operators----filetype,inurl,intitle,
+
+The Harvester (deprecated?)----theharvester -d cisco.com -b all
+
+Sudomain Enum----
+SubBrute----python /opt/massdns/scripts/subbrute.py /usr/share/wordlists/dns.top20000.txt driveshop.com 
+MassDNS----massdns -r /usr/share/wordlists/dns.resolvers.txt --verify-ip -w massdns.out.txt  -o S
+MassDNS----massdns -s 15000 -t CNAME -o J -r /usr/share/wordlists/resolvers.txt --flush
+The Harvester----theharvester -d driveshop.com -b all -c
+Sublist3r----sublist3r -d driveshop.com -b -o sublister.driveshop.txt
+Amass----amass enum -passive -include-unresolvable -timeout 10 -d bankofamerica.com | tee amass.txt
+<domain>
+DNScan----dnscan -d bankofamerica.com -w /usr/share/wordlists/commonspeak2-subdomains.txt -t 16 -6 -r -o dnscan.txt
+KnockPy----python knockpy.py domain.com -w /usr/share/wordlists/commonspeak2-subdomains.txt | grep domain.com | cut -d '"' -f2  | tee knockpy.out
+DNSRecon----dnsrecon -d bankofamerica.com -D /usr/share/wordlists/commonspeak2-subdomains.txt -g -b -k -w -z --threads 16 
+ALtDNS----altdns  -i subdomains.txt -o altdns.txt -w words.txt -r -s results_outputs.txt

@@ -1,0 +1,11 @@
+Windows Registry----
+Windows Auto-Login----reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
+AutoRuns----reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Run 
+AutoRuns----reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Runonce 
+AutoRuns----reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run 
+AutoRuns----reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Runonce 
+Service startup order----reg query hklm\system\currentcontrolset\control\servicegrouporder 
+reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion" /v ProductNarne 
+Service Info----reg query HKLM\SYSTEM\CurrentControlSet\Services\hMailServer	
+Dump Windows SAM file----reg save hklm\sam c:\sam 
+Dump Windows SYSTEM file----reg save hklm\system c:\system

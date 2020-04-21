@@ -1,0 +1,27 @@
+Android Hacking----
+
+ADB----
+List Devices----adb devices
+Install App----adb install /path/to/apk
+Upload File----adb push /from /to
+Download File----adb pull /from /to
+
+Install Burp Certificate in Browser----
+Trusted Cert Location----/system/etc/security/cacerts
+Downloads Folder Location----/storage/emulated/0/Download
+Push Burp Certificate to System Store----adb -s 192.168.0.165:5555 push .\9a5ba575.0 /system/etc/security/cacerts
+Remount RO Disk----adb remount
+
+GenyMotion----Downloaded 'for personal use'.  Created an account and chose existing VirtualBox installation.  Clicked the "plus" to add a new device and selected Samsung 10 (2048 MB of memory).  Booted up
+
+Drop Shell on System----adb shell
+Drop Shell on an emulated system----adb -s 192.168.0.165:5555 shell
+
+
+Uncrackable----adb -s 192.168.0.165:5555 reboot; adb -s 192.168.0.165:5555 install .\UnCrackable-Level1.apk
+
+ByteCodeViewer----
+onCreate() function checks c.a, c.b, c.c for root detection.----
+onCreate() function b.a(this.getApplicationContext()) checks if app is debuggable?----
+verify() function a.a checks for secret code.  ----
+
