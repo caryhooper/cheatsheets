@@ -1,5 +1,10 @@
 ICACLS----
 Fact----icacls preserves the canonical order of ACE entries as explicit denials, explicit grants, inherit denials, inherited grants.
+
+Set ACLs to default inherited ACL for all ma(T)ching files in (Q)uiet mode and (C)ontinue on errors----echo,Y|icacls C:\Windows\Fonts\*.exe /T /Q /C /RESET
+Grant everyone read access to file----echo,Y|cacls C:\Windows\Fonts\conhost.exe /G everyone:r
+Add System and Hidden attributes to file----attrib +s +h "C:\Windows\Fonts\d1lhots.exe"
+
 Permissions----
 Simple Rights----
 F----full access (create+delete+read+write+edit)

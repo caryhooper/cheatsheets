@@ -1,4 +1,11 @@
 Android Hacking----
+Unpack APK (unzip)----unzip app.apk -d /path/to/directory
+
+External Storage----Files created on external storage such as SD cards are globally readable and writable.  Don't store sensitive information here!  In addition, you should not store executable or class files because it should be treated as untrusted.
+
+Apktool----
+Unpack APK (apktool)----apktool d app.apk
+Get package name (reference) from APK----grep "package" ./application/AndroidManifest.xml
 
 ADB----
 List Devices----adb devices
@@ -9,8 +16,13 @@ Download File----adb pull /from /to
 Install Burp Certificate in Browser----
 Trusted Cert Location----/system/etc/security/cacerts
 Downloads Folder Location----/storage/emulated/0/Download
+Temporary Folder Location----/data/local/tmp
+Loot Directories (secrets may be stored here)----/assets, /res/raw
+
 Push Burp Certificate to System Store----adb -s 192.168.0.165:5555 push .\9a5ba575.0 /system/etc/security/cacerts
 Remount RO Disk----adb remount
+
+Check for package update functionality----application/vnd.android.package-archive
 
 GenyMotion----Downloaded 'for personal use'.  Created an account and chose existing VirtualBox installation.  Clicked the "plus" to add a new device and selected Samsung 10 (2048 MB of memory).  Booted up
 
@@ -23,5 +35,13 @@ Uncrackable----adb -s 192.168.0.165:5555 reboot; adb -s 192.168.0.165:5555 insta
 ByteCodeViewer----
 onCreate() function checks c.a, c.b, c.c for root detection.----
 onCreate() function b.a(this.getApplicationContext()) checks if app is debuggable?----
-verify() function a.a checks for secret code.  ----
+verify() function a.a checks for secret code.----
 
+Frida Notes----Frida is a dynamic binary instrumentation tool.  
+List processes----frida-ps -U -D 192.168.0.165:5555
+Function tracing (traces read and recv functions within Twitter app)----frida-trace -i "recv*" -i "read*" *twitter*
+Search for Root Detection Method----strings to search: /su,superuser.apk,supersu,busybox
+Use Frida to attach to process/inject code----frida -D 192.168.0.165:5555 -l .\fridademo-pinBypass.txt infosecadventures.fridademo  
+Change arguements of Java Function----(within JS) var ret_value = this.function(2,5); return ret_value;
+
+Reference----https://11x256.github.io/Frida-hooking-android-part-1/

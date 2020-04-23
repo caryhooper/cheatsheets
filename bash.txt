@@ -1,5 +1,7 @@
 Bash Tricks
 Ref:----https://guide.bash.academy/expansions/
+Definition----bash wraps the kernel so you can launch processes
+
 
 for loop----for i in $(cat countries.txt); do echo -n ${i:0:1} | tr '[:lower:]' '[:upper:]'; echo ${i:1}; done >> countries.txt
 for loop----for i in $(seq 1 10); do echo $i; done
