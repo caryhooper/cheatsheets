@@ -12,7 +12,8 @@ Updates Caplets (only run once)----sudo bettercap --eval "caplets.update; ui.uip
 Run HTTP-UI Caplet----sudo bettercap --caplet http[s]-ui
 Show Network----net.show
 Clear Screen----clear
-Cool Caplet View----"""cat foo.cap <<EOF
+Cool Caplet View----"""
+cat foo.cap &lt;&lt;EOF
 set ticker.commands 'clear; net.show; events.show 10'
 net.probe ON
 ticker ON
@@ -27,8 +28,7 @@ Get Help----help MODULE_NAME
 Use Caplet----include CAPLET
 Alias----alias MAC NAME
 Probe On----net.probe on
-Set ARP Spoofing Targets----set arp.spoof.targets <ip-addr>
-Turn on Parameter----arp.spoof on
+Set ARP Spoofing Targets----set arp.spoof.targets &lt;ip-addr&gt; Turn on Parameter----arp.spoof on
 
 Set Sniffing Verbose----set net.sniff.verbose true
 Sniff Network Traffic----net.sniff on
@@ -38,4 +38,4 @@ AirCrack-NG----aircrack-ng traffic.pcap -r /path/to/wordlist.txt
 AirBase-NG----airbase-ng --essid Starbucks -c 1 -a AA:AA:AA:AA:AA:AA -W 1 mon0
 AirBase-NG----airbase-ng --essid Starbucks -c 1 -a AA:AA:AA:AA:AA:AA -W 1 mon1
 AirBase-NG----airbase-ng --essid Starbucks -c 1 -a AA:AA:AA:AA:AA:AA -W 1 mon2
-airbase-ng -a aa:aa:aa:aa:aa:aa -c 1 -Z 4 mon0 --essid NoAP
+AirBase-NG----airbase-ng -a aa:aa:aa:aa:aa:aa -c 1 -Z 4 mon0 --essid NoAP
