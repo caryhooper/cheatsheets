@@ -5,18 +5,38 @@ Definition----bash wraps the kernel so you can launch processes
 ##Logic
 and----if [ -r 1 ] && [ -s 2 ]
 or----if [ $USER == 'bob' ] || [ $USER == 'andy' ]
-for loop----"""for i in $(cat countries.txt); 
-	do echo -n ${i:0:1} | tr '[:lower:]' '[:upper:]';
+for loop----"""
+for i in $(cat countries.txt); do 
+	echo -n ${i:0:1} | tr '[:lower:]' '[:upper:]';
 	echo ${i:1}; 
 done &gt;&gt; countries.txt"""
 for loop----for i in $(seq 1 10); do echo $i; done
 for loop----for ((i=1;i&lt;10;i++)); do echo $i; done
 if statement----if [ &lt;test&gt; ]; then echo foo; fi
-if-elif statement----if [ &lt;test&gt; ]; then echo 1; elif [ &lt;test2&gt; ]; then echo 2; else echo 3; fi
+if-elif statement----"""
+if [ &lt;test&gt; ]; 
+then 
+	echo 1; 
+elif [ &lt;test2&gt; ]; 
+then 
+	echo 2; 
+else 
+	echo 3; 
+fi"""
 if directory exists----if [ -d &lt;directory&gt; ];
 if file exists----if [ -f &lt;directory&gt; ];
 if symbolic link exists----if [ -L &lt;directory ];
-case statements----case $1 in start) echo start;; stop) echo stop;;restart) echo restart;; *) echo no clue;; esac
+case statements----"""
+case $1 in 
+	start) 
+		echo start;; 
+	stop) 
+		echo stop;;
+	restart) 
+		echo restart;; 
+	*) 
+		echo no clue;; 
+esac"""
 while statements----while [ &lt;test&gt; ]; do echo 1; done
 
 ##Tests and Conditionals
