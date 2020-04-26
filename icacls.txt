@@ -1,12 +1,11 @@
-ICACLS----
+####ICACLS
 Fact----icacls preserves the canonical order of ACE entries as explicit denials, explicit grants, inherit denials, inherited grants.
 
 Set ACLs to default inherited ACL for all ma(T)ching files in (Q)uiet mode and (C)ontinue on errors----echo,Y|icacls C:\Windows\Fonts\*.exe /T /Q /C /RESET
 Grant everyone read access to file----echo,Y|cacls C:\Windows\Fonts\conhost.exe /G everyone:r
 Add System and Hidden attributes to file----attrib +s +h "C:\Windows\Fonts\d1lhots.exe"
 
-Permissions----
-Simple Rights----
+##Permissions (Simple Rights)
 F----full access (create+delete+read+write+edit)
 M----modify access (create+delete+read+write)
 RX----read and execute
@@ -15,7 +14,7 @@ W----write-only
 N----no access
 D----delete access
 
-Specific Rights----
+## Permissions (Specific Rights)
 D{E}----delete
 RC----read control
 WDAC----write DAC
@@ -37,7 +36,7 @@ DC----delete child
 RA----read attributes
 WA----write attributes
 
-Inheritance Rights (directories only)----
+##Permissions - (Inheritance Rights / directories only)
 (OI)----object inherit (ACE inherited by this folder and files)
 (CI)----container inherit (ACE inherited by this folder and subfolders)
 (IO)----inherit only (ACE will be inherited, but does not apply to object itself)

@@ -1,10 +1,10 @@
-Linux Cheet Sheet----
-System----
+####Linux Cheet Sheet
+##System
 OS Information----cat /etc/*-release
 OS Version----cat /etc/issue
 Kernel Version----uname -a 
 
-Users----
+##Users
 Another Way to List passwd----getent passwd  
 Current Username/Privs----id
 Logged On Users----w
@@ -18,7 +18,7 @@ Sudoers----cat /etc/sudoers
 Add User to Sudoers----sudo adduser <username> sudo 
 Sudo as other user----sudo -u otheruser bash
 
-Network----
+##Network
 Network Connection----ss 
 TCP/UDP Connection----netstat -punta
 List of Open Files/Connections----lsof -i 
@@ -30,14 +30,14 @@ Domain SRV Lookup----host -t SRV _service _tcp.url.com
 Find DHCP Assignments----/var/log/messages | grep DHCP 
 SSH through a HTTP Proxy Tunnel----ssh cobb@127.0.0.1 -o "ProxyCommand=nc.openbsd -X connect -x 10.10.10.67:3128 %h %p"
 
-Processes, services, drivers----
+##Processes, services, drivers
 List Processes----ps -efww | ps -aef | ps aux
 Kill Process----kill <pid>
 Installed Packages (Debian)----dpkg -l 
 Installed Packages (Redhat/CENTOS)----rpm -qa 
 List Services----cat /etc/services 
  
-Files----
+##Files
 Find pdf files----find -i -name file -type '.pdf
 Determine File Type----file <file>
 Search Recursively for File Content----grep -R 'thing'
@@ -53,7 +53,7 @@ Shadow File (password hashes)----cat /etc/shadow
 Trash Bin----/home/your_username/.local/share/Trash
 Updates the Local Database----updatedb
 
-Misc----
+##Misc
 Update $PATH Variable----PATH=$PATH:/home/mypath
 Download WebPage----wget http:// url -0 url.txt -o /dev/null
 Remote Desktop----rdesktop 10.10.10.12

@@ -1,15 +1,15 @@
-GDB & Reversing Notes----
+####GDB & Reversing Notes
 gdb-peda----git clone https://github.com/longld/peda.git ~/peda; echo "source ~/peda/peda.py" >> ~/.gdbinit
+
+##GDP Commands
 b main----Break when the program enters main()
 info functions----List functions within binary
 x/50i <function>----lists the first 50 instructions of a function.
 b *0x4006f3----create breakpoint at memory address
 si----(unk)
 pattern_create----invokes ruby "pattern_create" module
-
 Set Arguments----set args $(python -c 'print("\x41"*120')
 Set Environment Variable----set env $(python -c 'print("\x41"*120')
+View Core Dump in GDB----gdb -q -c core
 
-Core Dump in GDB----gdb -q -c core
-
-gef----
+##gef

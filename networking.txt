@@ -1,8 +1,9 @@
-Networking Notes (TCP/IP)----
+####Networking Notes (TCP/IP)
+##Iptables
 IPV6 iptables rules----cat /etc/iptables/rules.v6
 IPv4 iptables rules----cat /etc/iptalbes/rules.v4
 
-Wireless Configuration----
+##Wireless Configuration
 Configure wlan0 interface----ifconfig wlan0 <ip-address>
 Start DNS/DHCP server----service dnsmasq restart
 Enable routing----sysctl net.ipv4.ip_forward=1

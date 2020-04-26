@@ -1,4 +1,4 @@
-SNMP Commands & Enumeration----
+####SNMP Commands & Enumeration
 SNMP Get----snmpcheck -t <ip-address> -c <community-string>
 Brute Force Community String----snmpbrute -t <ip-address>
 SNMP Walk----snmpwalk -v 2C -c <community-string> <ip-address>
@@ -24,3 +24,4 @@ Setup Host to Catch GRE Tunnel----"""
 	 iptables --table nat --append POSTROUTING --out-interface eth0 -j MASQUERADE
 	 iptables --append FORWARD --in-interface mynet -j ACCEPT
 	 """
+View Local SNMP Secrets----cat /etc/snmp/snmpd.conf

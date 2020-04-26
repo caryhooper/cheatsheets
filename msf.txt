@@ -1,12 +1,13 @@
-Meterpreter and Metasploit----
+####Meterpreter and Metasploit
 Port Forwarding----portfwd add -l 1111 -p 22 -r Target2
 Screenshot----screenshot -p file.jpg
 Idle Time----idletime
 Disable/Enable Mouse----uictl
 
-msfconsole----
+##msfconsole
 Immediately Background Sessions----exploit -j
 
-msfvenom----
+
+##msfvenom
 List Payloads----msfvenom --list payloads
-Payload Types----asp, perl, jsp, python, jar, php, linux (elf), windows (exe, dll), 
+Payload Types----asp, perl, jsp, python, jar, php, linux (elf), windows (exe, dll, ps1, psh-cmd)

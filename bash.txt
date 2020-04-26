@@ -1,38 +1,36 @@
-Bash Tricks
-Ref:----https://guide.bash.academy/expansions/
+####Bash Tricks
+Ref----https://guide.bash.academy/expansions/
 Definition----bash wraps the kernel so you can launch processes
 
-
-for loop----for i in $(cat countries.txt); do echo -n ${i:0:1} | tr '[:lower:]' '[:upper:]'; echo ${i:1}; done >> countries.txt
-for loop----for i in $(seq 1 10); do echo $i; done
-for loop----for ((i=1;i<10;i++)); do echo $i; done
-if statement----if [ <test> ]; then echo foo; fi
-if-elif statement----if [ <test> ]; then echo 1; elif [ <test2> ]; then echo 2; else echo 3; fi
-if directory exists----if [ -d <directory> ];
-if file exists----if [ -f <directory> ];
-if symbolic link exists----if [ -L <directory ];
-case statements----case $1 in start) echo start;; stop) echo stop;;restart) echo restart;; *) echo no clue;; esac
-while statements----while [ <test> ]; do echo 1; done
-
-
-
-Tests and Conditionals----
-simple test----if [[ $REPLY = y ]]; then echo 1; fi
-
-
-Logic----
+##Logic
 and----if [ -r 1 ] && [ -s 2 ]
 or----if [ $USER == 'bob' ] || [ $USER == 'andy' ]
+for loop----"""for i in $(cat countries.txt); 
+	do echo -n ${i:0:1} | tr '[:lower:]' '[:upper:]';
+	echo ${i:1}; 
+done &gt;&gt; countries.txt"""
+for loop----for i in $(seq 1 10); do echo $i; done
+for loop----for ((i=1;i&lt;10;i++)); do echo $i; done
+if statement----if [ &lt;test&gt; ]; then echo foo; fi
+if-elif statement----if [ &lt;test&gt; ]; then echo 1; elif [ &lt;test2&gt; ]; then echo 2; else echo 3; fi
+if directory exists----if [ -d &lt;directory&gt; ];
+if file exists----if [ -f &lt;directory&gt; ];
+if symbolic link exists----if [ -L &lt;directory ];
+case statements----case $1 in start) echo start;; stop) echo stop;;restart) echo restart;; *) echo no clue;; esac
+while statements----while [ &lt;test&gt; ]; do echo 1; done
 
-Shell Expansion----
+##Tests and Conditionals
+simple test----if [[ $REPLY = y ]]; then echo 1; fi
+
+##Shell Expansion
 Asterix (*)----matches any text or no text
 Question Mark (?)----matches a single character
 Char Set ([chars])----matches single character as long as its within the set
 Character Classes [[:classname:]]----alnum, alpha, ascii, blank, cntrl, digit, graph, lower, print, punct, space, upper, word, xdigit
 Tilde Home Path (~)----Expands to current user's home directory (i.e. /home/user)
 
-
-Extended Glob----When multiple patterns are needed to be used.
+##Extended Glob
+Use----When multiple patterns are needed to be used.
 +(pattern | pattern)----Matches when any of the patterns appears at least once
 *(pattern | pattern)----Matches when patterns appear at least once or not at all (what the heck?)
 ?(pattern | pattern)----Matches once or not at all
@@ -41,17 +39,17 @@ Extended Glob----When multiple patterns are needed to be used.
 Example 1----ls *.jp?(e)g
 Example 2----ls *.@(jpg|jpeg)
 
-Command Substitution (helpful for injection)----
+##Command Substitution (helpful for injection)
 $(cat /etc/passwd)----Launches command in subshell (new bash process)
 `cat /etc/passwd`----Deprecated syntax for same thing
 
-Shell Variables and Parameter Expansion----
+##Shell Variables and Parameter Expansion
 var1=myname----echo "My name is $name"
-contents="$(cat hello.txt)"----echo "Contents here: ${contents}<--end of file"
+contents="$(cat hello.txt)"----echo "Contents here: ${contents}&lt;--end of file"
 name=Britta time=23.73----echo "$name's current record is ${time%.*} seconds and ${time#*.} hundredths."
 more expansion----echo "PATH currently contains: ${PATH//:/, }"
 
-Examples with https://hooperlabs.xyz/h00p.html----
+##Parameter Expansion Examples (Input - https://hooperlabs.xyz/h00p.html)
 ${parameter#pattern}----Remove the shortest string that matches pattern (start) "${url#*/}" /www.hooperlabs.xyz/h00p.html
 ${parameter##pattern}----Remove the longest string that matches pattern (start) "${url##*/}" h00p.html
 ${parameter%pattern}----Remove the shortest string that matches the pattern (end) "${url%/*}" https://www.hooperlabs.xyz
@@ -64,7 +62,7 @@ ${#parameter}----Expand length of the value (in bytes) "${#url}" 36
 ${parameter:start:length}----Expand part of value starting at start, length bytes long "${url:7}" www.hooperlabs.xyz/h00p.html
 ${parameter[^|^^|,|,,]pattern}----Expand the transformed value, either upper or lower (first char or all chars) of string that matches the pattern. "${url^^[ht]}" HTTps://www.Hooperlabs.xyz/h00p.HTml
 
-Special Parameters----
+##Special Parameters
 "$1"----first positional parameter
 "$*"----expands single string, joining all parameters into one, separated by $IFS
 "$@"----expands the positional parameters as a list of separate arguments
@@ -75,7 +73,7 @@ Special Parameters----
 "$!"----expands unique PID foir last process started in background
 "$_"----expands to the last argument of previous command
 
-Shell Variables----
+##Shell Variables
 BASH----full pathname of command that started the current bash shell
 BASH_VERSION----active version of bash
 BASH_VERSIONINFO----array of detailed info about current version of bash
@@ -97,7 +95,7 @@ PATH----List of paths bash will search for executable programs when a command is
 PS1----Contains string that describes what the prompt should look like
 PS2----describes what the secondary prompt will look like
 
-Arrays----
+##Arrays
 array----files=( myscript hello.txt "foo bar.txt" ); rm -rv "${files[@]}"
 array (caution)----Use quotes around array!!! don't use ${files[@]}
 array append----files+=( selfie.png )
@@ -106,6 +104,3 @@ array first element----echo "${files[0]}"; echo "$files"
 array remove element----unset "files[3]"
 array number of elements----echo "${#files[@]}"
 array retrieve some elements----echo "${names[@]:1:2}"; echo "${names[@]: -2}"
-
-
-

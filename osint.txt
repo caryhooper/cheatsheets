@@ -1,6 +1,8 @@
-Open Source Intelligence----
+####Open Source Intelligence (OSINT)
 Whois Registration Lookup----whois domain.com
-Arin Whois----<a href="https://whois.arin.net/ui/advanced.jsp">https://whois.arin.net/ui/advanced.jsp</a>
+Arin Whois----<a href="https://whois.arin.net/ui/advanced.jsp">https://whois.arin.net/ui/
+advanced.jsp</a>
+Arin Whois----Find other netblocks by throwing in Wildcards to the search.
 Wigle----Geolocate MAC Addresses of Wifi Hotspots - <a href="https://wigle.net/">https://wigle.net/</a>
 
 Photos of Commercial Buildings----<a href="http://loopnet.com">http://loopnet.com</a>
@@ -15,7 +17,7 @@ Useful Operators----filetype,inurl,intitle,
 
 The Harvester (deprecated?)----theharvester -d cisco.com -b all
 
-Sudomain Enum----
+##Sudomain Enumeration
 SubBrute----python /opt/massdns/scripts/subbrute.py /usr/share/wordlists/dns.top20000.txt driveshop.com 
 MassDNS----massdns -r /usr/share/wordlists/dns.resolvers.txt --verify-ip -w massdns.out.txt  -o S
 MassDNS----massdns -s 15000 -t CNAME -o J -r /usr/share/wordlists/resolvers.txt --flush
@@ -27,3 +29,12 @@ DNScan----dnscan -d bankofamerica.com -w /usr/share/wordlists/commonspeak2-subdo
 KnockPy----python knockpy.py domain.com -w /usr/share/wordlists/commonspeak2-subdomains.txt | grep domain.com | cut -d '"' -f2  | tee knockpy.out
 DNSRecon----dnsrecon -d bankofamerica.com -D /usr/share/wordlists/commonspeak2-subdomains.txt -g -b -k -w -z --threads 16 
 ALtDNS----altdns  -i subdomains.txt -o altdns.txt -w words.txt -r -s results_outputs.txt
+
+ThreatCrowd----https://www.threatcrowd.org
+
+##Git Disclosures
+GitLeaks----https://github.com/zricethezav/gitleaks | docker pull zricethezav/gitleaks
+GitLeaks Example----docker run --rm --name=gitleaks zricethezav/gitleaks -v -r https://gitlab.com/StraightOuttaCrompton/aws-cdk-static-site
+Gitrob----https://github.com/michenriksen/gitrob
+Truffle Hog----https://github.com/dxa4481/truffleHog
+SHHGit----https://github.com/eth0izzle/shhgit

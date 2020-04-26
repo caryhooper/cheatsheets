@@ -1,4 +1,4 @@
-BPF notes----
+####BPF notes
 Reference----https://biot.com/capstats/bpf.html
 Reference----https://www.ibm.com/support/knowledgecenter/en/SS42VS_7.3.2/com.ibm.qradar.doc/c_forensics_bpf.html
 Protocol List----arp,ether,fddi,icmp,ip,ip6,link,ppp,radio,rarp,slip,tcp,tr,udp,wlan
@@ -7,7 +7,7 @@ Concatenation----{&&|and}
 Alteration----{|| | or}
 Explanation----BPFs may also be referred to with their primitives.  Multiple examples are given here.
 
-
+##Examples
 ICMP----proto 1
 ICMP----ip[9] = 0x1
 ICMP Echo----icmp[0] = 0x08
@@ -24,10 +24,8 @@ UDP----ip[9] = 0x11
 UDP + Port----udp dst port not 53
 Portrange----src portrange 80-88
 
-
 Mac Filter----ether {src|dst} <mac-addr>
 VLAN----vlan 100
-
 
 Fragmented IPv4----ip[6:2] & 0x3fff != 0x0000
 IPV6----ip[0] & 0xf0 != 4
@@ -44,7 +42,6 @@ TCP Flags (R)----tcp[13] & 4 != 0
 TCP Flags (S)----tcp[13] & 2 != 0
 TCP Flags (F)----tcp[13] & 1 != 0
 TCP Flags----{ip|ip6} tcp tcp-{ack|fin|syn|rst|push|urg|
-
 
 Packet Size > 134bytes----ip[2:2] > 0x86
 Multiple Filters----tcp[13] 0x02 = 2 and ip[2:2] > <hex-size> and ip[0] & 0xF0 != 4

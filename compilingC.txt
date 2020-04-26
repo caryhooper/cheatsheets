@@ -1,8 +1,10 @@
-C----
+####Compiling & Cross-Compiling
+
+##C
 32bit Compile----i686-w64-mingw32-gcc hello.c -o hello32.exe
 64bit Compile----x86_64-w64-mingw32-gcc hello.c -o hello64.exe
 Example----i686-w64-mingw32-gcc hello.c -o hello.exe -lws2_32 
 
-C++---- 
+##C++
 32bit Compile----i686-w64-mingw32-g++ hello.cc -o hello32.exe
 64bit Compile----x86_64-w64-mingw32-g++ hello.cc -o hello64.exe

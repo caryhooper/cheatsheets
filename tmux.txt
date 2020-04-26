@@ -1,4 +1,4 @@
-Tmux----
+####Tmux
 Horizontal Split----ctl + b + "
 Vertical Split----ctl + b + %
 Detatch----ctl + b + d

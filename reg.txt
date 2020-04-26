@@ -1,4 +1,4 @@
-Windows Registry----
+####Windows Registry
 Windows Auto-Login----reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
 AutoRuns----reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Run 
 AutoRuns----reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Runonce 

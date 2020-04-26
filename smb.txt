@@ -1,4 +1,4 @@
-SMB Enumeration----
+####SMB Enumeration
 Get Hostname----nbtscan <ip-address>
 Get Shares----smbclient -I <ip-address> -L <hostname>
 Interact with Share----smbclient \\\\<ip-address>\\share -U <user>

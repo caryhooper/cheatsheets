@@ -1,17 +1,19 @@
-Android Hacking----
+####Android Hacking
 Unpack APK (unzip)----unzip app.apk -d /path/to/directory
 
 External Storage----Files created on external storage such as SD cards are globally readable and writable.  Don't store sensitive information here!  In addition, you should not store executable or class files because it should be treated as untrusted.
 
-Apktool----
+##Apktool
 Unpack APK (apktool)----apktool d app.apk
 Get package name (reference) from APK----grep "package" ./application/AndroidManifest.xml
 
-ADB----
+##ADB
 List Devices----adb devices
 Install App----adb install /path/to/apk
 Upload File----adb push /from /to
 Download File----adb pull /from /to
+Uninstall Package (while specifying session)----adb -s 192.168.0.1:5555 uninstall com.app.local
+
 
 Install Burp Certificate in Browser----
 Trusted Cert Location----/system/etc/security/cacerts
@@ -32,12 +34,13 @@ Drop Shell on an emulated system----adb -s 192.168.0.165:5555 shell
 
 Uncrackable----adb -s 192.168.0.165:5555 reboot; adb -s 192.168.0.165:5555 install .\UnCrackable-Level1.apk
 
-ByteCodeViewer----
+##ByteCodeViewer
 onCreate() function checks c.a, c.b, c.c for root detection.----
 onCreate() function b.a(this.getApplicationContext()) checks if app is debuggable?----
 verify() function a.a checks for secret code.----
 
-Frida Notes----Frida is a dynamic binary instrumentation tool.  
+##Frida
+Definition----Frida is a dynamic binary instrumentation tool.  
 List processes----frida-ps -U -D 192.168.0.165:5555
 Function tracing (traces read and recv functions within Twitter app)----frida-trace -i "recv*" -i "read*" *twitter*
 Search for Root Detection Method----strings to search: /su,superuser.apk,supersu,busybox
