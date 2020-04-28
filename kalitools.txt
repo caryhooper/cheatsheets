@@ -4,9 +4,9 @@ searchsploit (View Exploit)----searchsploit -x 34451
 searchsploit (Download Exploit)----searchsploit -m 31337 
 seachsploit (Search without Color)----searchsploit --colour -t php 5.X | grep -vi \.php | head
 
-DNS Zone Transfer----dig axfr <domain> @<dns-server>
+DNS Zone Transfer----dig axfr &lt;domain&gt; @&lt;dns-server&gt;
 DNS Zone Transfer----nmap --script=dns-zone-transfer -p 53 ns2.domain.com
 DNS Zone Transfer----host -l domain namesvr 
 
-Desktop (mount shared folder)----rdesktop -u offsec -p password <ip-address> -r disk:home=/root
+Desktop (mount shared folder)----rdesktop -u offsec -p password &lt;ip-address&gt; -r disk:home=/root
 Debian (Kali) Network Manager----nmtui

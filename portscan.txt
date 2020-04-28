@@ -7,15 +7,15 @@ Light Scan----"--top-ports 50 --open"
 Ping Sweep----"-sn"
 
 ##nc
-TCP Netcat Scanning----nc -unvv -w 1 -z <ip> 440-450
-UDP Netcat Scanning----nc -nv -u -z -w1 <ip> 160-161
+TCP Netcat Scanning----nc -unvv -w 1 -z &lt;ip&gt; 440-450
+UDP Netcat Scanning----nc -nv -u -z -w1 &lt;ip&gt; 160-161
 
 
 ##Output
 Greppable Output (good for multiple hosts)----"-oG scan.grep"
 XML  Output (viewable in iexplore.exe)----"-oX scan.xml"
 
-UnicornScan (Faster for UDP scans)----unicornscan -m {UT} <ip-address>:1-65535
+UnicornScan (Faster for UDP scans)----unicornscan -m {UT} &lt;ip-address&gt;:1-65535
 
 ARP----arp-scan -l
 ARP----netdiscover -i tap0
