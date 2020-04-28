@@ -1,4 +1,4 @@
-####Title
+####Example Notes Formatting
 ##Subtitle A
 Topic 1----command 1
 Topic 2----command 2

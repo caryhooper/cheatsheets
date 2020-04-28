@@ -42,3 +42,5 @@ WA----write attributes
 (IO)----inherit only (ACE will be inherited, but does not apply to object itself)
 (NP)----do not propagate inherit (ACE only inherited one level deep)
 (I)----permission inherited from parent container
+
+Grant all users control----icacls C:\folder /grant "everyone":(OI)(CI)M

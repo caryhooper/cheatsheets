@@ -1,4 +1,4 @@
-####Linux Cheet Sheet
+####Linux Enumeration
 ##System
 OS Information----cat /etc/*-release
 OS Version----cat /etc/issue
