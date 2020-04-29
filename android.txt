@@ -31,13 +31,19 @@ GenyMotion----Downloaded 'for personal use'.  Created an account and chose exist
 Drop Shell on System----adb shell
 Drop Shell on an emulated system----adb -s 192.168.0.165:5555 shell
 
+##Common API Calls
+Execute Commands----Runtime.exec()
+Execute Commands----ProcessBuilder()
+Execute Commands----system()
+
+##Reversing 
+
+List Symbols from (shared) object files----nm -Ca foo.o
+List functions dynamically (only meaningful for dynamic objects such as SO)----nm -D foo.so
+List Information about Object----objdump -f foo.so
+List (dis)assembly of executable sections----objdump -d foo.so
 
 Uncrackable----adb -s 192.168.0.165:5555 reboot; adb -s 192.168.0.165:5555 install .\UnCrackable-Level1.apk
-
-##ByteCodeViewer
-onCreate() function checks c.a, c.b, c.c for root detection.----
-onCreate() function b.a(this.getApplicationContext()) checks if app is debuggable?----
-verify() function a.a checks for secret code.----
 
 ##Frida
 Definition----Frida is a dynamic binary instrumentation tool.  
@@ -46,5 +52,8 @@ Function tracing (traces read and recv functions within Twitter app)----frida-tr
 Search for Root Detection Method----strings to search: /su,superuser.apk,supersu,busybox
 Use Frida to attach to process/inject code----frida -D 192.168.0.165:5555 -l .\fridademo-pinBypass.txt infosecadventures.fridademo  
 Change arguements of Java Function----(within JS) var ret_value = this.function(2,5); return ret_value;
+
+frida-trace (trace calls to a library)----frida-trace -D &lt;device&gt; -p &lt;pid&gt; -i "libfoo.so!"
+frida-trace (trace calls to a library)----frida-trace -D &lt;device&gt; -p &lt;pid&gt; -i "Java_*""
 
 Reference----https://11x256.github.io/Frida-hooking-android-part-1/

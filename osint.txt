@@ -1,7 +1,6 @@
 ####Open Source Intelligence (OSINT)
 Whois Registration Lookup----whois domain.com
-Arin Whois----<a href="https://whois.arin.net/ui/advanced.jsp">https://whois.arin.net/ui/
-advanced.jsp</a>
+Arin Whois----<a href="https://whois.arin.net/ui/advanced.jsp">https://whois.arin.net/ui/advanced.jsp</a>
 Arin Whois----Find other netblocks by throwing in Wildcards to the search.
 Wigle----Geolocate MAC Addresses of Wifi Hotspots - <a href="https://wigle.net/">https://wigle.net/</a>
 

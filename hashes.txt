@@ -5,7 +5,9 @@ Hashcat w/Wordlist----.\hashcat64.exe -m 1000 C:\Users\Cary\Desktop\hash -o C:\p
 Hate Crack (TrustedSec)----python ../hate_crack/hate_crack.py C:\path\to\hash 1000
 John The Ripper (JrR)----john passwd.hash
 John Wordlist----john passwd.hash --wordlist=rockyou.txt
-Hashcat----hashcat64.exe -m 100 C:\path\to\hashes -o C:\path\to\outfile E:\path\to\wordlist
+##Hashcat
+Hashcat (wordlist)----hashcat64.exe -m 100 C:\path\to\hashes -o C:\path\to\outfile E:\path\to\wordlist
+Hashcat (mask attack / 6 character)----hashcat64.exe -m 0 C:\path\to\hash -o C:\path\to\outfile -a 3 -1 ?a ?1?1?1?1?1?1
 
 ##Brute Forcing
 THC Hydra----

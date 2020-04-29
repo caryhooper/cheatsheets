@@ -2,7 +2,12 @@
 
 List all services that do not run as a standard account----Get-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\* | Where-Object {($_.ObjectName -notlike 'NT Authority\*') -and ($_.ObjectName -ne $null) -and ($_.ObjectName -ne "LocalSystem")}
 
-Create a PSCredential----$username="foo";$pass = ConvertTo-SecureString "bar" -AsPlainText -Force; New-Object -TypeName PSCredential -ArgumentList $username,$pass
+
+##Remoting
+Create a PSCredential----##$username="foo";$pass = ConvertTo-SecureString "bar" -AsPlainText -Force; New-Object -TypeName PSCredential -ArgumentList $username,$pass
+Run a Remote Command----Get-WMIObject –ComputerName remotehost –query "Select * from Win32_Service Where Name=‘LanManServer'"" | Format-Table
+
+
 
 Import a Module----Import-Module .\MSOLSpray.ps1; 
 Azure Password Spray----Invoke-MSOLSpray -Userlist ./users.txt -Password "Spring2020"
@@ -15,6 +20,11 @@ List Scheduled Tasks----
 Raw WMIC Query----Get-CimInstance -Query "SELECT * from Win32_Process WHERE name LIKE 'P%'"
 Get AVs Installed----Get-CimInstance -Namespace root\securitycenter2 -ClassName antispywareproduct
 List All Namespaces----Get-WmiObject -Namespace root\CIMv2 -list
+List Running Servcies----Get-WmiObject -Query "SELECT * FROM win32_service WHERE state='running'" 
+List Services Beginning with "T"----Get-WmiObject -Query "SELECT * FROM win32_service WHERE name LIKE '[tT]%'"
+List Processes Like "owershell"----gwmi win32_process -Filter "name LIKE ‘_owershell%'"
+Remote Get-WMIObject Command----Get-WMIObject –ComputerName remotehost –query “Select * from Win32_Service Where Name=‘LanManServer’” | Format-Table
+
 
 ##PowerSploit
 Enumerate User----Get-NetUser &lt;user&gt;
