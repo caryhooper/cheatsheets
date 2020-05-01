@@ -95,3 +95,5 @@ Run wmic Remotely----wmic /node:remotehost /username:rambo /password:FirstBl00dP
 
 ##Lolbas
 Make HTTP Request (Download a file)----certutil.exe -urlcache -split -f http://7-zip.org/a/7z1604-x64.exe 7zip.exe
+
+##List Shadow Copies

