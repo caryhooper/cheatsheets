@@ -10,7 +10,7 @@ Display All User Info----whoami /all
 Env Variables Beginning with "U"----SET U All
 Add User----net user <user> <password> /add
 Add User to Group----net localgroup administrators /add <user>
-Add User to Domain Group----net group "Recruiting Admins" username /dom
+Add User to Domain Group----net group "HR Admins" myUser /add /domain
 
 ##Network
 Network Interfaces----ipconfig /all  
@@ -42,6 +42,7 @@ Search for Patches----dir /a /b c:\windows\kb'
 Search for Passwords----findstr /si password *.txt *.xml *.xls *.ini *.infrecursively from current directory 
 Search for filenames with password----dir /s *pass* == *cred* == *vnc* == *.config*
 Search registry for password----reg query HKLM /f password /t REG_SZ /s | reg query HKCU /f password /t REG_SZ /s | reg query HKLM /v password /t REG_SZ /s 
+View Remote Files----dir \\IP.ADD.RE.SS\C$
 
 ##Misc
 Enum Domain Info----dsquery
@@ -89,6 +90,7 @@ Close a Program----wmic process where processid="1000" call terminate
 Close a Remote Program----wmic /node:localhost /user:rambo /password:FirstBl00dPart3 process where name="paint.exe" call terminate
 Turn on RemoteDesktop-----wmic /node:"servername" /user:"user@domain" /password: "password" RDToggle where ServerName="server name" call SetAllowTSConnections 1
 LogicalDisk Free Space----wmic /Node:%%A LogicalDisk Where DriveType="3" Get DeviceID,FileSystem,FreeSpace,Size /Format:csv MORE /E +2 >> SRVSPACE.CSV
+List all Shares----wmic logicaldisk get name,providername
 List Startup Processes----wmic startup get caption,command,user
 Run wmic Remotely----wmic /node:remotehost /username:rambo /password:FirstBl00dPart3 service where name="LanManServer" get caption,name,status,started
 

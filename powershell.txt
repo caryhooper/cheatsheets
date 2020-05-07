@@ -30,6 +30,8 @@ Remote Get-WMIObject Command----Get-WMIObject –ComputerName remotehost –quer
 ##Bloodhound
 EXE Ingestor----.\SharpHound.exe --CollectionMethod All --LDAPUser &lt;UserName&gt; --LDAPPass &lt;Password&gt; --JSONFolder &lt;PathToFile&gt;
 Powershell Ingestor (SharpHound.ps1)----Invoke-BloodHound -CollectionMethod All  -LDAPUser &lt;UserName&gt; -LDAPPass &lt;Password&gt; -OutputDirectory &lt;PathToFile&gt;
+Start Neo4J and Import Bloodhound Results----##systemctl start neo4j; Navigate to http://127.0.0.1:7373; Configure username and password; ./BloodHound-linux-x64/BloodHound; Authenticate to Neo4j server; Upload the BloodHound.zip file within the GUI.
+
 
 
 ##PowerSploit
@@ -44,7 +46,7 @@ Enumerate Group Policies----Get-NetGPO
 Enumerate Group Policy for Specific Computer----Get-NetGPO -ComputerName cpu.local
 Enumerate OUs----Get-NetOU
 Enumerate ACLs----Get-ObjectAcl -SamAccountName &lt;AccountName&gt; -ResolveGUIDs
-Find Interesting ACes----Invoke-ACLScanner -ResolveGUIDs
+Find Interesting ACEs----Invoke-ACLScanner -ResolveGUIDs
 Check ACLs associated with SMB Share----Get-PathAcl -Path "\\Path\to\share"
 Enumerate Domain Trusts----Get-NetDomainTrust
 Enumerate Forest Trusts----Get-NetForestDomain

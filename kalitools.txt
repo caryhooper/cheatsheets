@@ -10,3 +10,14 @@ DNS Zone Transfer----host -l domain namesvr
 
 Desktop (mount shared folder)----rdesktop -u offsec -p password &lt;ip-address&gt; -r disk:home=/root
 Debian (Kali) Network Manager----nmtui
+
+Run JS from Command Line----node -e "console.log('hello')"
+Run JS File from Command Line----node script.js
+
+Mount a WEBDAV Share (requires davfs2)----mount -t davfs -o noexec http://example.com/webdav/ /mnt/webdav
+Store username + password for WEBDAV Share----echo -e "/mtn/webdav myUser P@ssw0rd" | tee -a /etc/davfs2/secrets
+
+##Curl
+PUT a file with NTLM Auth----curl --ntlm -u domain\\myUser:P@ssw0rd\? -T shell.php http://example.com:8080/shell.php
+
+

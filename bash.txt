@@ -124,3 +124,6 @@ array first element----echo "${files[0]}"; echo "$files"
 array remove element----unset "files[3]"
 array number of elements----echo "${#files[@]}"
 array retrieve some elements----echo "${names[@]:1:2}"; echo "${names[@]: -2}"
+
+##Sed
+Return all text between two words----sed -n -e '/BEGIN/./END/ p'

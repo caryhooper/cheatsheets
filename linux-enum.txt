@@ -68,3 +68,6 @@ Redirect STERR to STOUT----command 2>&1
 Unzip an Archive----unzip scripts.zip 
 Unpack a Tarball----tar xvzf tarball.tar.gz
 Pack a Tar Archive----tar cvf tarball.tar files/*
+
+##Privesc Scripts
+LinPEAS----<a href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS">https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS</a>

@@ -39,3 +39,5 @@ AirBase-NG----airbase-ng --essid Starbucks -c 1 -a AA:AA:AA:AA:AA:AA -W 1 mon0
 AirBase-NG----airbase-ng --essid Starbucks -c 1 -a AA:AA:AA:AA:AA:AA -W 1 mon1
 AirBase-NG----airbase-ng --essid Starbucks -c 1 -a AA:AA:AA:AA:AA:AA -W 1 mon2
 AirBase-NG----airbase-ng -a aa:aa:aa:aa:aa:aa -c 1 -Z 4 mon0 --essid NoAP
+
+Create SSL Certificate with LetsEncrypt----<a href="https://certbot.eff.org/lets-encrypt/ubuntubionic-apache">https://certbot.eff.org/lets-encrypt/ubuntubionic-apache</a>
