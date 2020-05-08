@@ -52,6 +52,8 @@ Enumerate Domain Trusts----Get-NetDomainTrust
 Enumerate Forest Trusts----Get-NetForestDomain
 Find All Local Admins----Invoke-EnumerateLocalAdmin -Verbose
 Find Computers Where DA has Session----Invoke-UserHunter -GroupName "RDPUsers" (-Stealth)
+New-Item File.txt | Get-Acl | Set-ACl foobar.ps1
+
 
 Get all effective member of group----Get-NetGroupMember -GroupName &lt;group&gt; -Recurse
 Search the forest global catalog----Get-NetUser -UserName &lt;user&gt; -ADSpath "GC: //domain.com"

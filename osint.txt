@@ -17,16 +17,16 @@ Useful Operators----filetype,inurl,intitle,
 The Harvester (deprecated?)----theharvester -d cisco.com -b all
 
 ##Sudomain Enumeration
-SubBrute----python /opt/massdns/scripts/subbrute.py /usr/share/wordlists/dns.top20000.txt driveshop.com 
+SubBrute----python /opt/massdns/scripts/subbrute.py /usr/share/wordlists/dns.top20000.txt domain.com 
 MassDNS----massdns -r /usr/share/wordlists/dns.resolvers.txt --verify-ip -w massdns.out.txt  -o S
 MassDNS----massdns -s 15000 -t CNAME -o J -r /usr/share/wordlists/resolvers.txt --flush
-The Harvester----theharvester -d driveshop.com -b all -c
-Sublist3r----sublist3r -d driveshop.com -b -o sublister.driveshop.txt
-Amass----amass enum -passive -include-unresolvable -timeout 10 -d bankofamerica.com | tee amass.txt
+The Harvester----theharvester -d domain.com -b all -c
+Sublist3r----sublist3r -d domain.com -b -o outfile.txt
+Amass----amass enum -passive -include-unresolvable -timeout 10 -d domain.com | tee amass.txt
 <domain>
-DNScan----dnscan -d bankofamerica.com -w /usr/share/wordlists/commonspeak2-subdomains.txt -t 16 -6 -r -o dnscan.txt
+DNScan----dnscan -d domain.com -w /usr/share/wordlists/commonspeak2-subdomains.txt -t 16 -6 -r -o dnscan.txt
 KnockPy----python knockpy.py domain.com -w /usr/share/wordlists/commonspeak2-subdomains.txt | grep domain.com | cut -d '"' -f2  | tee knockpy.out
-DNSRecon----dnsrecon -d bankofamerica.com -D /usr/share/wordlists/commonspeak2-subdomains.txt -g -b -k -w -z --threads 16 
+DNSRecon----dnsrecon -d domain.com -D /usr/share/wordlists/commonspeak2-subdomains.txt -g -b -k -w -z --threads 16 
 ALtDNS----altdns  -i subdomains.txt -o altdns.txt -w words.txt -r -s results_outputs.txt
 
 ThreatCrowd----https://www.threatcrowd.org

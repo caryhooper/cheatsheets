@@ -71,3 +71,10 @@ Pack a Tar Archive----tar cvf tarball.tar files/*
 
 ##Privesc Scripts
 LinPEAS----<a href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS">https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS</a>
+
+##Filesystem
+Find inode number of files in current directory (inodes are 4 bytes)----ls -i .
+Find inode number of current directory----ls -id .
+Read an inode----icat /dev/sdb1 &lt;inode-number&gt; | xxd | head
+Input a file, block size, skip blocks, count for # blocks----dd if=/dev/mapper/VulnOSv2--vg-root bs=4096 skip=4718592 count=32767 > /images/bg144.raw
+Find Ascii strings with decimal offset----strings -a -t d
