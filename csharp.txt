@@ -13,7 +13,7 @@ If...Else Statement----if(){}else if(){}
 Do While Loop----do{ } while();
 While Loop----while(){};
 For Loop----foreach(foo in foos){}
-For Loop----for(var i; i &lt;= 10; i++){};
+For Loop----for(var i = 1; i &lt;= 10; i++){};
 Case/Switch Statement----switch(a){case 1: var c=1;break; case 2: var c=2; break; default: var c=3; break;}
 Try/Catch/Finally----try{}catch{}catch{}finally{}
 
@@ -34,3 +34,6 @@ appsettings.json----config settings of the app, db connection string, applicatio
 bundleconfig.json----create bundles and minifications of CSS files/scripts
 program.cs----app entry point w/host,web server,startup.cs file
 startup.cs----add services & config HTTP pipeline & URL routes
+
+##Compiling
+Create Self-contained application----dotnet publish -c Release -r win10-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true

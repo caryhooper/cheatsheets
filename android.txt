@@ -31,6 +31,15 @@ GenyMotion----Downloaded 'for personal use'.  Created an account and chose exist
 Drop Shell on System----adb shell
 Drop Shell on an emulated system----adb -s 192.168.0.165:5555 shell
 
+##Tools
+Jadx (Convert APK to Java)----jadx -d /path/to/output app.apk
+Dex2Jar (Convert APK to Jar)----d2j-dex2jar.sh /path/to/app.apk
+JD-GUI----Java Decompiler for .JAR files
+Apktool (convert source to smali)----apktool d file.apk
+MARA Framework (Static Analysis)----./mara.sh -s '/path/to/app.apk'
+QARK (Static Vulnerability Analysis Tool)----Decompiles/Scans for security issues
+MobSF (Mobil Security Framework)----Automated analysis of Android/iOS/Windows for static and dynamic analysis.
+
 ##Common API Calls
 Execute Commands----Runtime.exec()
 Execute Commands----ProcessBuilder()

