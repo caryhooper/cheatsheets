@@ -38,6 +38,8 @@ case $1 in
 		echo no clue;; 
 esac"""
 while statements----while [ &lt;test&gt; ]; do echo 1; done
+Read one line at a time----<file while read; do echo "$REPLY"; done
+Read one line at a time----<file while read line; do echo "$line"; done
 
 ##Tests and Conditionals
 simple test----if [[ $REPLY = y ]]; then echo 1; fi
@@ -48,6 +50,8 @@ Question Mark (?)----matches a single character
 Char Set ([chars])----matches single character as long as its within the set
 Character Classes [[:classname:]]----alnum, alpha, ascii, blank, cntrl, digit, graph, lower, print, punct, space, upper, word, xdigit
 Tilde Home Path (~)----Expands to current user's home directory (i.e. /home/user)
+
+Arbitrary fd Redirection----##exec 3<>"Hi Mom"; cat <&3
 
 ##Extended Glob
 Use----When multiple patterns are needed to be used.
@@ -81,8 +85,11 @@ ${parameter/%pattern/replacement}----Replace string matching pattern at end "${u
 ${#parameter}----Expand length of the value (in bytes) "${#url}" 36
 ${parameter:start:length}----Expand part of value starting at start, length bytes long "${url:7}" www.hooperlabs.xyz/h00p.html
 ${parameter[^|^^|,|,,]pattern}----Expand the transformed value, either upper or lower (first char or all chars) of string that matches the pattern. "${url^^[ht]}" HTTps://www.Hooperlabs.xyz/h00p.HTml
+echo ${PATH//:/ }----Substitute : for spaces in $PATH.
+{1...10}----numbers in sequence (separated by spaces)
+{01..10..2}----count by twos
 
-##Special Parameters
+##Special Parameters (History Expansion)
 "$1"----first positional parameter
 "$*"----expands single string, joining all parameters into one, separated by $IFS
 "$@"----expands the positional parameters as a list of separate arguments
@@ -92,6 +99,12 @@ ${parameter[^|^^|,|,,]pattern}----Expand the transformed value, either upper or 
 "$$"----expands PID for current shell process
 "$!"----expands unique PID foir last process started in background
 "$_"----expands to the last argument of previous command
+"!!"----expands to full previous line
+"echo !:2"----expands to second argument of last command
+"!-2"----second command in history
+"!:2-5"----all but first argument of last command
+"~+"----current working directory
+"~-"----old working directory
 
 ##Shell Variables
 BASH----full pathname of command that started the current bash shell
@@ -127,3 +140,9 @@ array retrieve some elements----echo "${names[@]:1:2}"; echo "${names[@]: -2}"
 
 ##Sed
 Return all text between two words----sed -n -e '/BEGIN/./END/ p'
+Substitute string for another (and delete first line)----sed -e 1d -e s/foo/bar/g /tmp/foo
+Substitute string for another (and delete first line)----sed '1d; s/foo/bar/g' /tmp/foo
+Delete lines from file containing string----sed -i '/192\.168\.0\.1/d' /var/log/apache2/access.log
+
+##Awk
+Use awk as cut----echo a,b,c,d,e | awk -F, '{print $1 $2 $3 $5}'

@@ -42,3 +42,7 @@ GitLeaks Example----docker run --rm --name=gitleaks zricethezav/gitleaks -v -r h
 Gitrob----https://github.com/michenriksen/gitrob
 Truffle Hog----https://github.com/dxa4481/truffleHog
 SHHGit----https://github.com/eth0izzle/shhgit
+
+
+##Social Media
+Linkedin (email lookup)----https://linkedin.com/sales/gmail/profile/viewByEmail/

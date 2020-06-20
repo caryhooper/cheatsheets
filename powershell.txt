@@ -79,3 +79,12 @@ Execute Classic Mimikatz Commands----Invoke-Mimikatz -Command '"privilege::debug
 
 Empire Powershell Payload----powershell -noP -sta -w1 -enc &lt;base64-encoded-payload&gt;
 ScriptBlock Logging----Logging feature that captures PS scripts in readable form.  Empire may bypass by unhooking it via "cachedGroupPolicySettings" variable manipulation.  It may also nullify the "suspicious strings" array.  
+
+Query Windows Events----Get-WinEvent -LogName Microsoft-Windows-Sysmon/Operational -MaxEvents 5
+Query Specific Windows Event IDs-----Get-WinEvent -FilterHashTable @{logname='Microsoft-Windows-Sysmon/Operational'; Id=10}
+
+##Basics
+List Environment Variables----Get-ChildItem Env:
+Quickly list out numbers----1..255
+List Properties of a Registry Key----(Get-Item HKLM:\SYSTEM\CurrentControlSet\Control\Lsa) | Get-ItemProperty
+Run .PS1 File----. .\Add-SSP

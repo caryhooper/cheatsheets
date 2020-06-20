@@ -45,4 +45,6 @@ KnownDLLs (DLLs known to be included in the System)----HKLM\SYSTEM\CurrentContro
 Safe DLL Search (searches current directory last)----HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\SafeDllSearchMode
 CWDIllegalInDllSearch (??)----HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\CWDIllegalInDllSearch
 Active Setup (Autoruns which run before Run/Runonce)----HKLM\SOFTWARE\Microsoft\Active Setup\Installed Components\
-
+Load custom DLL when LSA restarts----HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\ (Security Packages -- REG_MULTI_SZ -- mimilib)
+Protocol Handlers----HKEY_LOCAL_MACHINE\SOFTWARE\Classes\PROTOCOLS\Handler\
+COM Class Unique Identifiers/Information (CLSID)-----HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{CLSID}

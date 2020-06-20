@@ -65,4 +65,8 @@ Change arguements of Java Function----(within JS) var ret_value = this.function(
 frida-trace (trace calls to a library)----frida-trace -D &lt;device&gt; -p &lt;pid&gt; -i "libfoo.so!"
 frida-trace (trace calls to a library)----frida-trace -D &lt;device&gt; -p &lt;pid&gt; -i "Java_*""
 
+##Objection
+Repack APK with frida-gadget DLL----objection patchapk -s test_app.apk
+Interact with gadget----frida -U gadget
+
 Reference----https://11x256.github.io/Frida-hooking-android-part-1/
