@@ -38,8 +38,8 @@ case $1 in
 		echo no clue;; 
 esac"""
 while statements----while [ &lt;test&gt; ]; do echo 1; done
-Read one line at a time----<file while read; do echo "$REPLY"; done
-Read one line at a time----<file while read line; do echo "$line"; done
+Read one line at a time----&lt;file while read; do echo "$REPLY"; done
+Read one line at a time----&lt;file while read line; do echo "$line"; done
 
 ##Tests and Conditionals
 simple test----if [[ $REPLY = y ]]; then echo 1; fi
@@ -51,7 +51,7 @@ Char Set ([chars])----matches single character as long as its within the set
 Character Classes [[:classname:]]----alnum, alpha, ascii, blank, cntrl, digit, graph, lower, print, punct, space, upper, word, xdigit
 Tilde Home Path (~)----Expands to current user's home directory (i.e. /home/user)
 
-Arbitrary fd Redirection----##exec 3<>"Hi Mom"; cat <&3
+Arbitrary fd Redirection----##exec 3&lt;&gtl"Hi Mom"; cat &lt;&3
 
 ##Extended Glob
 Use----When multiple patterns are needed to be used.
