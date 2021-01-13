@@ -62,8 +62,8 @@ Search for Root Detection Method----strings to search: /su,superuser.apk,supersu
 Use Frida to attach to process/inject code----frida -D 192.168.0.165:5555 -l .\fridademo-pinBypass.txt infosecadventures.fridademo  
 Change arguements of Java Function----(within JS) var ret_value = this.function(2,5); return ret_value;
 
-frida-trace (trace calls to a library)----frida-trace -D &lt;device&gt; -p &lt;pid&gt; -i "libfoo.so!"
-frida-trace (trace calls to a library)----frida-trace -D &lt;device&gt; -p &lt;pid&gt; -i "Java_*""
+frida-trace (trace calls to a library)----frida-trace -D <device> -p <pid> -i "libfoo.so!"
+frida-trace (trace calls to a library)----frida-trace -D <device> -p <pid> -i "Java_*""
 
 ##Objection
 Repack APK with frida-gadget DLL----objection patchapk -s test_app.apk

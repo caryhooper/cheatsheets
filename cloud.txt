@@ -45,10 +45,10 @@ Data in Public Azure Blobs ---- Microburst
 Data in Public Google Storage Buckets----Cloud_Enum @initstring, scans all three cloud services for buckets and enumerates.
 AWS Exploitation Framework (Rhino Security)----https://github.com/RhinoSecurityLabs/pacu
 Import Keys into AWS CLI----sudo aws configure
-List all Modules----pacu&gt; list
-Run Module----pacu&gt; run s3__bucket_finder -d glitchcloud
-List AWS S3 Bucket----pacu&gt; aws s3 ls  s3://glitchcloud
-Download AWS S3 Bucket----pacu&gt; aws s3 sync  s3://glitchcloud s3-files-dir (https://glitchcloud.s3.amazonaws.com/index.html)
+List all Modules----pacu> list
+Run Module----pacu> run s3__bucket_finder -d glitchcloud
+List AWS S3 Bucket----pacu> aws s3 ls  s3://glitchcloud
+Download AWS S3 Bucket----pacu> aws s3 sync  s3://glitchcloud s3-files-dir (https://glitchcloud.s3.amazonaws.com/index.html)
 Data in Public Azure Blogs----Microburst (NetSPI), Invoke-EnumerateAzureBlobs
 Data in Public Google Storage Buckets Cloud_enum from @initstring.  
 
