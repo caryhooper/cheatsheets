@@ -1,0 +1,47 @@
+####Kali Linux Tools
+Web Shells----ls /usr/share/webshells/ 
+searchsploit (View Exploit)----searchsploit -x 34451
+searchsploit (Download Exploit)----searchsploit -m 31337 
+seachsploit (Search without Color)----searchsploit --colour -t php 5.X | grep -vi \.php | head
+
+DNS Zone Transfer----dig axfr <domain> @<dns-server>
+DNS Zone Transfer----nmap --script=dns-zone-transfer -p 53 ns2.domain.com
+DNS Zone Transfer----host -l domain namesvr 
+
+<<<<<<< HEAD
+RDesktop (mount shared folder)----rdesktop -u offsec -p password &lt;ip-address&gt; -r disk:home=/root
+RDesktop (xfreerdp w/ clipboard)----xfreerdp /clipboard /v:mycomputer.mydomain.local /port:3389 /u:myuser /d:mydomain.local /p:mypass /size:1600*1000
+=======
+Desktop (mount shared folder)----rdesktop -u offsec -p password <ip-address> -r disk:home=/root
+>>>>>>> 9bc9018d7207d0d9de3f79094cb83bc24c524580
+Debian (Kali) Network Manager----nmtui
+
+Run JS from Command Line----node -e "console.log('hello')"
+Run JS File from Command Line----node script.js
+
+Mount a WEBDAV Share (requires davfs2)----mount -t davfs -o noexec http://example.com/webdav/ /mnt/webdav
+Store username + password for WEBDAV Share----echo -e "/mtn/webdav myUser P@ssw0rd" | tee -a /etc/davfs2/secrets
+Mount a VMDK File (libguestfs-tools)----guestmount -a /path/to/test.vmdk -i --ro /mnt/diskmnt
+
+##Curl
+PUT a file with NTLM Auth----curl --ntlm -u domain\\myUser:P@ssw0rd\? -T shell.php http://example.com:8080/shell.php
+
+
+##Empire
+Configure Listeners----uselistener http
+DefaultDelay/DefaultJitter----How often does a beacon phone home?
+Launcher----What the base command looks like
+Headers----Server-side headers presented by the server
+Proxy/ProxyCreds----Web proxy-related settings
+Configure Stager----usestager multi/launcher
+Uses Invoke-Obfuscation----assorted string manipulation to obfuscate signature-based analysis of payloads.
+Interact with Agent----interact AGENTID
+Execute Shell Command----shell ipconfig
+
+##OpenSSL
+Decrypt a file with key and IV (no padding/no salt)----openssl enc -d -nosalt -nopad -aes-256-cbc -K "A4D350E68EED39C72CEA5585464789E160B5C5782FDD28A7D2D227F40D7B76E4" -iv '1BD487C6AC68570040CCB900EA9FED05' -in wonkatania.enc -out wonkatania.txt -k "Pure Imagination"
+
+##UFW
+List Rules----ufw status numbered
+Delete Rule----ufw delete 1
+Add Rule----uwf add allow 80:80/tcp
