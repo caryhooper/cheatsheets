@@ -56,3 +56,6 @@ F5 TCL Injection (Send the following in JSESSIONID that doesn't respond typical 
 
 ##SSTI
 Jinja2 reads from templates directory----{{config}}
+
+##Clone Websites
+Download all files (wget)----wget -r -np -k &lt;URL&gt;

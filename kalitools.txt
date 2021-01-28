@@ -8,7 +8,8 @@ DNS Zone Transfer----dig axfr &lt;domain&gt; @&lt;dns-server&gt;
 DNS Zone Transfer----nmap --script=dns-zone-transfer -p 53 ns2.domain.com
 DNS Zone Transfer----host -l domain namesvr 
 
-Desktop (mount shared folder)----rdesktop -u offsec -p password &lt;ip-address&gt; -r disk:home=/root
+RDesktop (mount shared folder)----rdesktop -u offsec -p password &lt;ip-address&gt; -r disk:home=/root
+RDesktop (xfreerdp w/ clipboard)----xfreerdp /clipboard /v:mycomputer.mydomain.local /port:3389 /u:myuser /d:mydomain.local /p:mypass /size:1600*1000
 Debian (Kali) Network Manager----nmtui
 
 Run JS from Command Line----node -e "console.log('hello')"

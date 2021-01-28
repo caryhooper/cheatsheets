@@ -42,7 +42,7 @@ GitLeaks Example----docker run --rm --name=gitleaks zricethezav/gitleaks -v -r h
 Gitrob----https://github.com/michenriksen/gitrob
 Truffle Hog----https://github.com/dxa4481/truffleHog
 SHHGit----https://github.com/eth0izzle/shhgit
+View git log----git log --pretty=oneline
+Show changes in commit----git show &lt;hash&gt;
 
-
-##Social Media
-Linkedin (email lookup)----https://linkedin.com/sales/gmail/profile/viewByEmail/
+ Security code sent to ••••••••••••8578. DO NOT share this security code. We WILL NOT contact you for it.

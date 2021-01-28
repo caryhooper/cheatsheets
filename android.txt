@@ -6,6 +6,8 @@ External Storage----Files created on external storage such as SD cards are globa
 ##Apktool
 Unpack APK (apktool)----apktool d app.apk
 Get package name (reference) from APK----grep "package" ./application/AndroidManifest.xml
+Convert smali to dex----fullpath=$(pwd); for file in $(find . -name "*.smali"); do smali a $fullpath/$file;  done
+
 
 ##ADB
 List Devices----adb devices
@@ -13,7 +15,11 @@ Install App----adb install /path/to/apk
 Upload File----adb push /from /to
 Download File----adb pull /from /to
 Uninstall Package (while specifying session)----adb -s 192.168.0.1:5555 uninstall com.app.local
-
+List Packages----adb shell 'pm list package'
+List Running Processes----adb shell 'ps | grep com'
+Add a Device----adb connect 192.168.0.28:5555
+Drop Shell on System----adb shell
+Drop Shell on an emulated system----adb -s 192.168.0.165:5555 shell
 
 Install Burp Certificate in Browser----
 Trusted Cert Location----/system/etc/security/cacerts
@@ -28,8 +34,7 @@ Check for package update functionality----application/vnd.android.package-archiv
 
 GenyMotion----Downloaded 'for personal use'.  Created an account and chose existing VirtualBox installation.  Clicked the "plus" to add a new device and selected Samsung 10 (2048 MB of memory).  Booted up
 
-Drop Shell on System----adb shell
-Drop Shell on an emulated system----adb -s 192.168.0.165:5555 shell
+
 
 ##Tools
 Jadx (Convert APK to Java)----jadx -d /path/to/output app.apk
@@ -46,11 +51,12 @@ Execute Commands----ProcessBuilder()
 Execute Commands----system()
 
 ##Reversing 
-
 List Symbols from (shared) object files----nm -Ca foo.o
 List functions dynamically (only meaningful for dynamic objects such as SO)----nm -D foo.so
 List Information about Object----objdump -f foo.so
 List (dis)assembly of executable sections----objdump -d foo.so
+Generate Assembly----objdump --section=.text -s -d main.o
+View GOT----objdump -d -j .got /path/to/bin
 
 Uncrackable----adb -s 192.168.0.165:5555 reboot; adb -s 192.168.0.165:5555 install .\UnCrackable-Level1.apk
 
@@ -70,3 +76,5 @@ Repack APK with frida-gadget DLL----objection patchapk -s test_app.apk
 Interact with gadget----frida -U gadget
 
 Reference----https://11x256.github.io/Frida-hooking-android-part-1/
+Search for secrets in memory (objection)----memory search secretPass --string
+

