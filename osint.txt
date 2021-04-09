@@ -34,7 +34,7 @@ ALtDNS----altdns  -i subdomains.txt -o altdns.txt -w words.txt -r -s results_out
 
 ThreatCrowd----##domain="myDomain.com"; curl https://www.threatcrowd.org/domain.php?domain=$domain | grep "$domain'>" | sed "s/$domain.>/\n/g" | grep $domain | cut -d '<' -f1; https://www.threatcrowd.org
 Subdmain Takeover (one-liner)----chaos -d domain.com -silent | nuclei -t nuclei-templates/dns/dead-host-with-cname.yaml
-
+Hunt Devs----companyname github linkedin
 
 ##Git Disclosures
 GitLeaks----https://github.com/zricethezav/gitleaks | docker pull zricethezav/gitleaks

