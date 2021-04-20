@@ -31,3 +31,8 @@ Download File with SSH----ssh user1@host1 cat rfile > lfile
 Detatch process from shell----screen
 Redirect with socat----sudo socat TCP4-LISTEN:80,fork TCP4:secure.losenolove.com:80
 Detatch Screen----screen -d
+
+##VLAN Hopping
+Info----Takes advantage of a switch misconfiguration with the DTP (Dynamic Trunking Protocol) mode.  If the mode is set to dynamic desirable, the attacker can negotiate its own trunk 
+Tool----yersinia --> DTP --> launch attack --> "enable trunking"
+Add a VLAN interface----##modprobe 8021q; vconfig add eth0 200; ifconfig eth0.200 up; ifconfig eth0.200 10.0.0.6 up

@@ -99,28 +99,15 @@ componentDidMount()----Final method called during the mounting phase.  Placing f
 componentWillUnmount()----Performs a function after DOM unmounts (so dangling JS functions don't keep running)
 
 
-
-##Subtitle A
-Topic 1----command 1
-Topic 2----command 2
-Topic 3----command 3
-##Subtitle B
-Topic 1----command 1
-Topic 2 (multiline command)----"""
-multiline
-command displayed on
-these three lines"""
-Topic 3 (Sublist)----##First Bullet; Second Bullet; Third Bullet;
-
-
-function makeDoggy(e) {
+##Examples
+Simple Function----"""function makeDoggy(e) {
   // Call this extremely useful function on an <img>.
   // The <img> will become a picture of a doggy.
   e.target.setAttribute('src', 'https://content.codecademy.com/courses/React/react_photo-puppy.jpeg');
   e.target.setAttribute('alt', 'doggy');
-}
+}"""
 
-export class NavBar extends React.Component {
+Simple Class----"""export class NavBar extends React.Component {
   render() {
     const pages = ['home', 'blog', 'pics', 'bio', 'art', 'shop', 'about', 'contact'];
     const navLinks = pages.map(page => {
@@ -133,10 +120,10 @@ export class NavBar extends React.Component {
 
     return <nav>{navLinks}</nav>;
   }
-}
+}"""
 
 
-//CLOCK.js
+Clock Component----"""
 import React from 'react';
 
 export class Clock extends React.Component {
@@ -174,9 +161,9 @@ export class Clock extends React.Component {
     }, delay);
   }
 }
+"""
 
-
-//PhoneNumber.js
+Phone Number Handler Component----"""
 import React, { useState } from 'react';
 
 // regex to match numbers between 1 and 10 digits long
@@ -191,10 +178,10 @@ export default function PhoneNumber() {
       <input value={phone} onChange={handleChange} id='phone-input'/>
     </div>
   );
-}
+}"""
 
-//QuizNavBar.js
-import React, { useState } from 'react';
+
+Quiz Navigation Bar Component----"""import React, { useState } from 'react';
 
 export default function QuizNavBar({ questions }) {
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -218,4 +205,4 @@ export default function QuizNavBar({ questions }) {
       </div>
     </nav>
   );
-}
+}"""
