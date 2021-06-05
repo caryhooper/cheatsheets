@@ -49,3 +49,4 @@ Create a new branch----git checkout -b new-feature
 Delete a branch locally----git checkout -d new-feature
 Delete a branch remotely----git push origin --delete new-feature
 Merge branches----git checkout master; git merge branch2
+Remove added directory----git rm -r --cached .\Scripts\
