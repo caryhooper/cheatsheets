@@ -392,7 +392,57 @@ Get one item----reader[0][0]
 Write a CSV----"""outputFile = open('output.csv','w', newline='')
 writer= csv.writer(outputFile)
 writer.writerow([1,2,3,4])"""
+Write CSV with different delimiter/lineterminator----csvWriter = csv.writer(csfFile, delimiter='\t', lineterminator='\n\n')
 
+##JSON
+Read JSON into variable (as dict)----string_from_json = json.loads('{"foo":"bar","food":"baz"}')
+Read JSON dict to string----json.dumps('{"foo":"bar"}')
 
+##Keeping Time and Scheduling Tasks
+Get Current Time in epoch time(import time)----time.time()
+Get Time Difference----time.time() - time.time()
+Sleep for 5 Seconds----time.sleep(5)
+Round a Number----round(time.time(),2)
+Datetime modules----import datetime
+Separating datetime objects----"""import datetime
+datetime.datetime.now()
+dt = datetime.datetime(2015,2,27,11,10,49,55,53)
+dt.year, dt.month, dt.day"""
+Get Datetime Obj from Timestamp----datetime.datetime.fromtimestamp(10000000)
+Using the Timedelta Data Type----delta = datetime.timedelta(days=11,hours=10,minutes=9,seconds=8)
+Get total seconds----delta.total_seconds()
+Add 10 days to now----datetime.datetime.now() + datetime.timedelta(days=10)
+Convert Datetime Objects into Strings----date_var.strftime('%Y/%m/%d %H:%M:%S')
+Convert String into Datetime----datetime.datetime.strptime('October 21, 2015', '%B %d, %Y')
 
+##strftime directives
+Year with century (2014)----%Y
+Year without century (14)----%y
+Month as Decimal Number----%m
+Full month name----%B
+Abbreviated month name----%b
+Day of the month----%d
+Day of the year----%j
+Day of the week----%w
+Full Weekday Name----%A
+Abbreviated weekday name----%a
+Hour (24hr clock)----%H
+Hour (12hr clock)----%I
+Minute----%M
+Second----%S
+AM or PM----%p
+Literal % character----%%
 
+##Threading
+Start a Thread----"""import threading
+threadObj = threading.Thread(target=print, args=['cat','dog','monkey'],kwargs={'sep': ' & '})
+threadObj.start()"""
+
+##Launching Other Programs
+Subprocess Module (start a subprocess of the Python program)----import subprocess
+Start a program with no arguments----proc = subprocess.Popen('C:\\Windows\\System32\\calc.exe')
+Start a program with arguments----proc = subprocess.Popen(['C:\\Windows\\notepad.exe','C:\\hello.txt'])
+Poll for a program to be complete----proc.poll()
+Wait for a program to exit----proc.wait()
+Open file with default application (Note- shell=True is only needed on Windows)----subprocess.Popen(['start','hello.txt'],shell=True)
+Open file with default application OSX----subprocess.Popen(['open','hello.txt'])
