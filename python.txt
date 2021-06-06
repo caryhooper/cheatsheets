@@ -446,3 +446,46 @@ Poll for a program to be complete----proc.poll()
 Wait for a program to exit----proc.wait()
 Open file with default application (Note- shell=True is only needed on Windows)----subprocess.Popen(['start','hello.txt'],shell=True)
 Open file with default application OSX----subprocess.Popen(['open','hello.txt'])
+
+##Sending and Reading Email
+Send an Email with smtplib----import smtplib
+Connect to SMTP Server using TLS----smtpObj = smtplib.SMTP('smtp.example.com',587)
+Connect to a SMTP Server that doesn't support TLS----smtpObj = smtplib.SMTP_SSL('smtp.gmail.com',465)
+Send client EHLO----smtpObj.ehlo()
+Start TLS connection (only port 587)----smtpObj.starttls()
+Login to SMTP Server----smtpObj.login('bob@example.com','PASSWORD')
+Send an email----smtpObj.sendmail('bob@example.com','alice@example.com','Subject: So long.\nDear Alice, so long and thanks for all the fish.  Sincerely, Bob')
+Close SMTP Connection----smtpObj.quit()
+Gmail Application-Specific Passwords----Gmail has an additional security feature for Google accounts called "application-specific passwords", where you the exposure of this password doesn't compromise your entire google account.
+View received email with IMAP----import imapclient
+Connect to IMAP Server----imapObj = imapclient.IMAPClient('imap.gmail.com',ssl=True)
+Login to IMAP Server----imapObj.login('h00p@hooperlabs.xyz','chumbawumbafan69')
+Select IMAP Folder----imapObj.select_folder('INBOX', readonly=True)
+List IMAP Folders----pprint.pprint(imapObj.list_folders())
+Get all UIDs of messages after date----UIDs = imapObj.search(['SINCE 05-Jul-2014'])
+Other IMAP Search Words----##ALL; BEFORE date; ON date; SUBJECT foobar; BODY foobar; TEXT foobar; FROM email; TO email; CC email; BCC email; SEEN; UNSEEN; ANSWERED; UNANSWERED; DELETED; UNDELETED; DRAFT; UNDRAFT; FLAGGED; UNFLAGGED; LARGER N; SMALLER N; NOT foobar; OR foobar1 foobar1
+Fetch a message with a UID----rawMessages = imapObj.fetch([40041], ['BODY[]','FLAGS'])
+Read a message with pyzmail----import pyzmail
+Convert message to a readable format----message = pyzmail.PyzMessage.factory(rawMessages[40041]['BODY[]'])
+Get Message Subject----message.get_subject()
+Get Message FROM address----message.get_address('from')
+Get CC'd addresses----message.get_addresses('cc')
+Get Message Text----message.text_part.get_payload().decode(message.text_part.charset)
+Get Message HTML----message.html_part.get_payload().decode(message.html_part.charset)
+Log out of IMAP server----imapObj.logout()
+Read Messages with a 10MB limit instead of 10kb limit----imaplib._MAXLINE = 10000000
+Search Gmail----UIDs = imapObj.gmail_search('meaning of life')
+Delete a Message----imapObj.delete_messages(UIDs)
+Expunge Deleted Messages----imapObj.expunge()
+
+##Sending Text Messages
+Send a SMS Text----"""from twilio.rest import TwilioRestClient
+accountSID = 'foobar'
+authToken = 'xx'
+twilioCli = TwilioRestClient(accountSID, authToken)
+twilioNumber = '+15555555555'
+myCellNumber = '+14444444444'
+message = twilioCli.messages.create(body='Mr. Watson - Come here - I want to see you.', from_=twilioNumber, to=myCellNumber
+updatedMessage = twilioCli.messages.get(message.sid)"""
+
+
