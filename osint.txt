@@ -5,6 +5,7 @@ Arin Whois----Find other netblocks by throwing in Wildcards to the search.
 Wigle----Geolocate MAC Addresses of Wifi Hotspots - <a href="https://wigle.net/">https://wigle.net/</a>
 Mylnikov (Wigle for Europe)----http://find-wifi.mylnikov.org/
 
+Grayhat Warfare----Search publicly-available S3 buckets (useful for borrowing a certificate).
 Photos of Commercial Buildings----<a href="http://loopnet.com">http://loopnet.com</a>
 MAC OUI Lookup----curl http://api.macvendors.com/fc-a1-3e-2a-1c-33
 

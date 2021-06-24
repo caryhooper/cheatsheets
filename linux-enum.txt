@@ -102,4 +102,5 @@ Every Month----0 0 1 * * command
 Every 6 Months----0 0 1 */6 * command
 Every Year----0 0 1 1 * command
 
-##
+##Mysql
+Failed to start DB troubleshooting----##mysqld --help --verbose | grep 'log-error' | tail -1; mysqld --help --verbose | grep 'datadir' | tail -1
