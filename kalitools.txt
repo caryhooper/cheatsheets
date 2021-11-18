@@ -40,6 +40,12 @@ Execute Shell Command----shell ipconfig
 
 ##OpenSSL
 Decrypt a file with key and IV (no padding/no salt)----openssl enc -d -nosalt -nopad -aes-256-cbc -K "A4D350E68EED39C72CEA5585464789E160B5C5782FDD28A7D2D227F40D7B76E4" -iv '1BD487C6AC68570040CCB900EA9FED05' -in wonkatania.enc -out wonkatania.txt -k "Pure Imagination"
+Connect to a HTTPS client (like nc)----openssl s_client -connect hooperlabs.xyz:443 -cipher EXP-RC4-MD5
+Encode Base64 or other things----openssl enc -d base64 -in file.b64 -out file.txt
+Decrypt AES or other things----openssl enc aes -k deadlist -in file.txt -out file.enc
+Hash/Digest/Signature----openssl dgst -sha1 file.txt
+Encrypt an image----openssl enc -aes-128-ecb -e -in logo.rgba -out logo-ecb.rgba -pass pass:deadlist
+Use a salt, key, and IV derived from a password (-k)----openssl enc -aes-128-cbc -k pass -p -in file1 -out file1.enc
 
 ##UFW
 List Rules----ufw status numbered
@@ -48,3 +54,10 @@ Add Rule----uwf add allow 80:80/tcp
 
 ##Perl
 Install Perl Module----perl -MCPAN -e 'install NetPacket::IP'
+
+##Image Manipulation
+Remove compression from an image----convert -depth 32 logo.png logo.rgba
+Repackage RGBA into PNG----convert -size $(identify logo.png | cut -f 3 -d ' ' ) -depth 32 logo-ecb.rgba logo-ecb.png
+
+##Text Manipulation
+Add bytes to end of a 1111-byte file----dd if=/dev/zero of=file2 bs=1 count=100 seek=1111

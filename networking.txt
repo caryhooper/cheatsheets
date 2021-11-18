@@ -12,6 +12,10 @@ Run access point daemon----hostapd /etc/hostapd/hostapd.conf
 
 WireShark Decrypt SSL Traffic----Create SSLKEYLOGFILE environment variable pointing to log file.  (May have to run Chrome.exe --ssl-key-log-file=C:\Temp\ssl-keys.log
 
+##Packets and Packet Captures (usually run elevated)
+Capture OSPF traffic----tcpdump -i eth0 -n "ip[9]==89"
+Remove TCP headers and dump TCP payloads into separate files----tcpick -wR -r capture.pcap
+Remove TCP headers and dump TCP payloads into separate files for Client or Server only----tcpick -wR{C,S} -r capture.pcap
 
 ##Scapy
 Import Scapy----from scapy.all import scapy
@@ -21,6 +25,7 @@ Show a Summary----myPackets.show()
 Show TCP Layer of Packet----myPackets[1][TCP]
 Change src IP of packet----packet.src = "127.0.0.1"
 Gather all "Raw" data of every packet----pkt[Raw].load for pkt in TCP_PACKETS if Raw in pkt
+Do things for all packets in a pcap----sniff(offline="test.pcap",prn=handler_function,filter="tcp or udp")
 
 ##SSH
 SSH Hop through host----ssh -J user1@host1 user2@host2

