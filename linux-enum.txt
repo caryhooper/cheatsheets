@@ -22,6 +22,7 @@ Sudo as other user----sudo -u otheruser bash
 Network Connection----ss 
 TCP/UDP Connection----netstat -punta
 List of Open Files/Connections----lsof -i 
+List interfaces----ip link
 Arp Table----arp 
 Routing Table----route 
 Domain Lookup----dig -x <ip-address>  

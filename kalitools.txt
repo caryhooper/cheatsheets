@@ -45,3 +45,6 @@ Decrypt a file with key and IV (no padding/no salt)----openssl enc -d -nosalt -n
 List Rules----ufw status numbered
 Delete Rule----ufw delete 1
 Add Rule----uwf add allow 80:80/tcp
+
+##Perl
+Install Perl Module----perl -MCPAN -e 'install NetPacket::IP'

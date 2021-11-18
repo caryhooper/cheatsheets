@@ -8,6 +8,9 @@ Bust Parameter Names----wfuzz --hw 0 -w /usr/share/seclists/Discovery/Web-Conten
 Wfuzz Headers Through Proxy----wfuzz -u http://example.com/admin.php -H FUZZ:127.0.0.1 -w /usr/share/headers.txt -p 127.0.0.1:8080:HTTP
 Wfuzz Multiple Parameters----wfuzz --hh 19 -u "http://10.10.36.35:8081/auth?login=FUZZ&password=FUZ2Z" -z file,users.txt -z file,/usr/share/wordlists/rockyou.txt
 Wfuzz Subdomain Enumeration----wfuzz --hl 107 -u http://10.10.116.180 -H "Host: FUZZ.cmess.thm" -w /usr/share/wordlists/commonspeak2-subdomains.txt
+ffuf with Headers----ffuf -w ../wordlists/common.txt -H "Cookie: token=foo; ctfchallenge=bar" -u http://www.vulnbegin.co.uk/cpadmin/FUZZ
+ffuf to brute password----ffuf -w ../wordlists/10-million-password-list-top-100.txt -X POST -d "username=admin&password=FUZZ" -H "Cookie: ctfchallenge=cookie" -H "Content-Type: application/x-www-form-urlencoded" -u http://www.vulnbegin.co.uk/cpadmin/login -mc all -fc 200
+
 
 ##Local File Inclusion
 List of Windows Files----<a href="http://pwnwiki.io/?_escaped_fragment_=presence/windows/blind.md#!presence/windows/blind.md">Windows Blind Files</a>

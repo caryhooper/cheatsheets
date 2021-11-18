@@ -48,3 +48,4 @@ Active Setup (Autoruns which run before Run/Runonce)----HKLM\SOFTWARE\Microsoft\
 Load custom DLL when LSA restarts----HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\ (Security Packages -- REG_MULTI_SZ -- mimilib)
 Protocol Handlers----HKEY_LOCAL_MACHINE\SOFTWARE\Classes\PROTOCOLS\Handler\
 COM Class Unique Identifiers/Information (CLSID)-----HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{CLSID}
+Disable Windows Defender----reg add  "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableRealtimeMonitoring /t REG_DWORD /d 1
