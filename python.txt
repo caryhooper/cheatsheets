@@ -95,8 +95,11 @@ Multiple Assignments----"""cats = ['Andy', 'Betty', 'Carl']
 cat1, cat2, cat3 = cats"""
 Find Value in a List----my_list.index('Andy') #Returns '0'
 Add Value to a List----my_list.append('Daryll')
+Add Multiple Values to List----my_list.extend(['foo','bar'])
+Add Value to Start of List----my_list.insert(0,"foobar")
 Insert Value in a List----my_list.insert(1,'Azelle')
 Remove Value in a List----my_list.remove('Carl')
+Remove Last Value in a List and Save----last_item = my_list.pop()
 Sort Values in a List----my_list.sort(reverse=True)
 Sort Strings in List (case independent)----my_list.sort(key=str.lower)
 String (immutable)----list of single text characters
@@ -163,6 +166,12 @@ Remove all leading and trailing characters----'\n\nHello\n\n\n\n'.strip('\n')
 Copy and Paste Strings with pyperclip----"""import pyperclip
 pyperclip.copy('Hello World!)
 pyperclip.paste()"""
+Reverse a String----my_string[::-1]
+Substring of first 5 Characters----my_string[:5]
+All but first 5 characters----my_stringp[5:]
+Substring of last 5 Characters----my_string[-5:]
+All but last 5 characters----my_string[:-5]
+Convert Sentence to List----foo.split(" ")
 
 ##Regular Expressions
 Basic Regex (phone number regex object)----"""import re
@@ -206,6 +215,7 @@ os.path.dirname(path) #returns C:\\Windows\\System32"""
 Split Path based on file and dirname----dirname,basename = os.path.split(path)
 Split Path into list based on separator----path.split(os.path.sep) #Returns ['C:','Windows','System32','calc.exe']
 Get Size of File----os.path.getsize(path)
+Get Info about File----os.stat(path)
 List directory contents----os.listdir(os.path.dirname(path))
 Checking path validity----os.path.exists('C:\\Windows')
 Checking if file exists----os.path.isfile('C:\\nc.exe')
@@ -472,6 +482,7 @@ Get Message FROM address----message.get_address('from')
 Get CC'd addresses----message.get_addresses('cc')
 Get Message Text----message.text_part.get_payload().decode(message.text_part.charset)
 Get Message HTML----message.html_part.get_payload().decode(message.html_part.charset)
+Decode Non-Ascii Bytes----b"\x90".decode("latin-1")
 Log out of IMAP server----imapObj.logout()
 Read Messages with a 10MB limit instead of 10kb limit----imaplib._MAXLINE = 10000000
 Search Gmail----UIDs = imapObj.gmail_search('meaning of life')
@@ -489,3 +500,21 @@ message = twilioCli.messages.create(body='Mr. Watson - Come here - I want to see
 updatedMessage = twilioCli.messages.get(message.sid)"""
 
 
+##Ctypes (Local Library Functions)
+Ctypes allows you to load and call functions in dlls----import ctypes
+Load a Windows Library----stdcall = ctypes.windll.LoadLibrary("/path/to/lib.dll")
+Load a C Library----cdecl_dll = ctypes.cdll.LoadLibrary("C:\\Windows\\System32\\crtdll.dll"); cdecl_dll.printf(b'Hello, %s', b"HooperLabs")
+
+##PEFile (Access and Modify EXEs and DLLs)
+PEFile lets you read and write the various pieces of PE Files----import pefile
+Save PE as Python Object----exe = pefile.PE("C:\\Windows\\System32\\crtdll.dll")
+View Headers----hex(exe.OPTIONAL_HEADER.ImageBase)
+View Entry Point----exe.OPTIONAL_HEADER.AddressOfEntryPoint
+Print all Functions in EXE----import pefile; [print(f"Name: {fn.name} Address: {fn.address}") for fn in pefile.PE("/path/to/DLL.dll").DIRECTORY_ENTRY_EXPORT.symbols]
+
+##Get OS Information
+Determine Platform Name----sys.platform
+Determine System Version Name----sys.getwindowsversion()
+
+##Tricky Math
+Format a decimal to a bitmap string (1s and 0s)----format(my_bitmap_int, "016b")
