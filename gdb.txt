@@ -32,7 +32,7 @@ See Call Stack / Function Backtrace (and see return addresses on the stackx)----
 Change assembly Syntax Used----set disassembly-flavor {intel,att}
 List Breakpoints----info breakpoints
 Delete a Breakpoints----del breakpoint 
-View a value in hex at a memory location----x/wx 0xdeadbeef
+View 10 words in hex at a memory location----x/10wx 0xdeadbeef
 Breakpoint on a Relative Memory location----break *main+39
 Examine next 16 instructions----x/16i $eip
 Custom Arguments----run `python -c 'print("foobar")'`
@@ -41,6 +41,7 @@ Turn on Core dumps ----ulimit -c unlimited
 Read a core dump gdb --core=core
 Read memory addresses Surrounding ESP----x/40wx $esp-0x268
 Find memory address of LibC function----print system
+Set a Relative Breakpoint to a Function----break * functionname+60
 
 
 ##objdump
@@ -61,5 +62,6 @@ Look for all JMPs or Calls----jmpcall
 Convert hex to ASCII----print (char []) 0x24424142
 Find offset of Buffer----pattern_offset BAB$
 Note----Calling a program with its shortened path vs full path changes the memory alignment of a program.  
+Turn ASLR On----ASLR on
 
 ##gef
