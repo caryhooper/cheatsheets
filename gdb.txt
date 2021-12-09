@@ -63,5 +63,6 @@ Convert hex to ASCII----print (char []) 0x24424142
 Find offset of Buffer----pattern_offset BAB$
 Note----Calling a program with its shortened path vs full path changes the memory alignment of a program.  
 Turn ASLR On----ASLR on
+Search Memory for a Strin----searchmem BBBBBBB
 
 ##gef

@@ -240,6 +240,7 @@ list(shelfFile.values())
 shelfFile.close()"""
 
 ##Organizing Files
+Add an Environment Variable----os.putenv("MYVAR","A"*1000)
 Copying files and folders (shutil module)----shutil.copy('C:\\spam.txt','C:\\delicious')
 Copy folder and all subelements----shutil.copytree('C:\\bacon','C:\\bacon_backup')
 Move file----shutil.move('C:\\bacon.txt','C:\\eggs') #Results in move from C:\\ to C:\\eggs\\bacon.txt if the directory 'eggs' exists
@@ -518,3 +519,7 @@ Determine System Version Name----sys.getwindowsversion()
 
 ##Tricky Math
 Format a decimal to a bitmap string (1s and 0s)----format(my_bitmap_int, "016b")
+
+##Numpy Tricks
+Create an array----arr = numpy.array([[0]*x] * y, numpy.int32)
+Access an array value----arr[2,3]

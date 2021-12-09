@@ -54,6 +54,11 @@ Add Rule----uwf add allow 80:80/tcp
 
 ##Perl
 Install Perl Module----perl -MCPAN -e 'install NetPacket::IP'
+Open and create a file----open($FILE, ">name_of_file"); 
+Close the file.----close($FILE); 
+Print characters to file----print($FILE $file-content.$more_file_content); #
+Declare a variable----my $variable = "poop"; 
+Loads in little endian byte format----payload += struct.pack("<I", 0x019F6940) #
 
 ##Image Manipulation
 Remove compression from an image----convert -depth 32 logo.png logo.rgba
