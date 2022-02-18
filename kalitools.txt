@@ -63,6 +63,7 @@ Loads in little endian byte format----payload += struct.pack("<I", 0x019F6940) #
 ##Image Manipulation
 Remove compression from an image----convert -depth 32 logo.png logo.rgba
 Repackage RGBA into PNG----convert -size $(identify logo.png | cut -f 3 -d ' ' ) -depth 32 logo-ecb.rgba logo-ecb.png
+Change exif data for image----exiftool -Comment='mycomment' index.jpeg
 
 ##Text Manipulation
 Add bytes to end of a 1111-byte file----dd if=/dev/zero of=file2 bs=1 count=100 seek=1111

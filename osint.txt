@@ -51,3 +51,5 @@ Delete a branch locally----git checkout -d new-feature
 Delete a branch remotely----git push origin --delete new-feature
 Merge branches----git checkout master; git merge branch2
 Remove added directory----git rm -r --cached .\Scripts\
+Add a submodule to repo----git submodule add https://example.com/user/repo.git destination_folder
+Git clone a Branch----git clone --branch recipes git@github.com:caryhooper/hooperlabs
