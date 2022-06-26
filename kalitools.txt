@@ -46,6 +46,8 @@ Decrypt AES or other things----openssl enc aes -k deadlist -in file.txt -out fil
 Hash/Digest/Signature----openssl dgst -sha1 file.txt
 Encrypt an image----openssl enc -aes-128-ecb -e -in logo.rgba -out logo-ecb.rgba -pass pass:deadlist
 Use a salt, key, and IV derived from a password (-k)----openssl enc -aes-128-cbc -k pass -p -in file1 -out file1.enc
+Create a New Certificate----##openssl req -newkey rsa:2048 -nodes -keyout priv.key -x509 -days 362 -out priv.crt; cat priv.key priv.crt > priv.pem
+Read a x509 Certificate----openssl x509 -in cert.crt -text
 
 ##UFW
 List Rules----ufw status numbered

