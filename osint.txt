@@ -2,6 +2,7 @@
 Whois Registration Lookup----whois domain.com
 Arin Whois----<a href="https://whois.arin.net/ui/advanced.jsp">https://whois.arin.net/ui/advanced.jsp</a>
 Arin Whois----Find other netblocks by throwing in Wildcards to the search.
+Whois----whois hooperlabs.xyz
 Wigle----Geolocate MAC Addresses of Wifi Hotspots - <a href="https://wigle.net/">https://wigle.net/</a>
 Mylnikov (Wigle for Europe)----http://find-wifi.mylnikov.org/
 
@@ -15,6 +16,7 @@ Google Dorks----
 List of Subdomains without main page----site:"microsoft.com" -site:"www.microsoft.com" 
 Web Cams----inurl:"/control/userimage.html" 
 Useful Operators----filetype,inurl,intitle,
+Find Directory Listing----intitle:"index of" "parent directory"
 
 The Harvester (deprecated?)----theharvester -d cisco.com -b all
 
@@ -45,7 +47,7 @@ Truffle Hog----https://github.com/dxa4481/truffleHog
 SHHGit----https://github.com/eth0izzle/shhgit
 View git log----git log --pretty=oneline
 Show changes in commit----git show <hash>
-Fork/Pull Repo----Within UI, fork project; git clone https://github.com/caryhooper/repo.git; git remote add upstream https://github.com/username/repo.git; 
+Fork/Pull Repo----Within UI, fork project; git clone https://github.com/caryhooper/repo.git; git checkout -b new_branch; git remote add upstream https://github.com/username/repo.git; ** make changes and commit **; git push -u origin new_branch
 Create a new branch----git checkout -b new-feature
 Delete a branch locally----git checkout -d new-feature
 Delete a branch remotely----git push origin --delete new-feature
@@ -53,3 +55,14 @@ Merge branches----git checkout master; git merge branch2
 Remove added directory----git rm -r --cached .\Scripts\
 Add a submodule to repo----git submodule add https://example.com/user/repo.git destination_folder
 Git clone a Branch----git clone --branch recipes git@github.com:caryhooper/hooperlabs
+
+
+##Recon-ng
+Search marketplace for modules----marketplace search github
+Get info about marketplace module----marketplace info recon/domains-hosts/google_site_web
+Load Module----modules load recon/domains-hosts/google_site_web
+Get info about current module----info
+Set Options----options set SOURCE hooperlabs.xyz
+Go Back a Menu----back
+Show all hosts discovered----show hosts
+Install a module----marketplace install recon/hosts-hosts/resolve
