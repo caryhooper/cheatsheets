@@ -1,6 +1,7 @@
 ####Windows Enumeration
 ##System
 List System Info----systeminfo
+List System Info (shortened)----systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type"
 Hostname----hostname
 OS Version----ver
 
@@ -14,11 +15,14 @@ Add User to Domain Group----net group "HR Admins" myUser /add /domain
 
 ##Network
 Network Interfaces----ipconfig /all  
-Routing Table----route
+Routing Table----route print
 ARP Table----arp -A 
 All Open Connections----netstat -ano
+All TCP Connections----netstat -ano -p TCP
 Firewall State----netsh firewall show state firewall state 
 Firewall Config----netsh firewall show config firewall config 
+Firewall State----netsh advfirewall show currentprofile
+Firewall Config----netsh advfirewall firewall show rule name=all
 List Computers In Current Domain----net view
 List Users----net users 
 List User Info----net user user1 
@@ -35,6 +39,8 @@ Running Services----net start
 Query Service Config----sc qc [service_name]
 Service Info----sc queryex state= 
 List Drivers----DRIVERQUERY
+List Drivers----driverquery.exe /v /fo csv | ConvertFrom-CSV | Select-Object 'Display Name', 'Start Mode', Path
+Get Loaded Driver Version Numbers----Get-WmiObject Win32_PnPSignedDriver | Select-Object DeviceName,DriverVersion,Manufacturer | ?{$_.DeviceName -like "*XBox*"}
 
 ##Searching Files
 PDF Search----dir /a /s /b c:\'.pdf' 
@@ -43,6 +49,9 @@ Search for Passwords----findstr /si password *.txt *.xml *.xls *.ini *.infrecurs
 Search for filenames with password----dir /s *pass* == *cred* == *vnc* == *.config*
 Search registry for password----reg query HKLM /f password /t REG_SZ /s | reg query HKCU /f password /t REG_SZ /s | reg query HKLM /v password /t REG_SZ /s 
 View Remote Files----dir \\IP.ADD.RE.SS\C$
+List Mounted Drives----mountvol
+Search for AlwaysInstallElevated----reg query HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Installer
+Search for AlwaysInstallElevated----reg query HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer
 
 ##Misc
 Enum Domain Info----dsquery
@@ -63,6 +72,7 @@ Wget Equivalent----Invoke-WebRequest -uri <URL> -OutFile C:\Windows\TEMP\outfile
 
 ##System Internal Suite Notes
 Accept EULA----accesschk.exe /accepteula 
+Find Files With Insecure Permissions----accesschk.exe -uws "Everyone" "C:\Program Files"
 Check Auto Runs----Autorunsc.exe /accepteula
 Check File Privs----C:\Users\Public\accesschk64.exe /accepteula * 
 Check Process Privs----accesschk.exe -vqp *
@@ -85,6 +95,7 @@ List Hotfixes----wmic qfe list brief
 Desktop Information----wmic desktop list brief
 CD Information----wmic cdrom list brief
 NIC Information----wmic nic list brief
+List Installed Programs (lists only installed by Windows Installer)----wmic product get name,version,vendor
 Control Output of wmic Command----wmic process get name,processid
 Close a Program----wmic process where processid="1000" call terminate
 Close a Remote Program----wmic /node:localhost /user:rambo /password:FirstBl00dPart3 process where name="paint.exe" call terminate

@@ -48,6 +48,8 @@ Encrypt an image----openssl enc -aes-128-ecb -e -in logo.rgba -out logo-ecb.rgba
 Use a salt, key, and IV derived from a password (-k)----openssl enc -aes-128-cbc -k pass -p -in file1 -out file1.enc
 Create a New Certificate----##openssl req -newkey rsa:2048 -nodes -keyout priv.key -x509 -days 362 -out priv.crt; cat priv.key priv.crt > priv.pem
 Read a x509 Certificate----openssl x509 -in cert.crt -text
+Export a Certificate from PFX----openssl pkcs12 -in file.pfx -clcerts -nokeys -out cert.crt
+Export a Private Key from PFX----openssl pkcs12 -in file.pfx -nocerts -out key.pem
 
 ##UFW
 List Rules----ufw status numbered

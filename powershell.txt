@@ -102,8 +102,10 @@ Run .PS1 File----. .\Add-SSP
 List all Files in Directory----Get-ChildItem C:\Users\user -Recurse
 Recusively grep through all files in directory----Get-ChildItem . -Recurse -ErrorAction Silentlycontinue | Select-String -Pattern "password"
 List loaded assemblies in current process----[appdomain]::currentdomain.getassemblies() | so -Property fullname | ft fullname
+Find Files with Insecure Permissions----Get-ChildItem "C:\Program Files" -Recurse | Get-ACL | ?{$_.AccessToString -match "Everyone\sAllow\s\sModify"}
 
-
+##AD
+Get LAPS Password----Get-ADComputer -Filter * -Properties ms-Mcs-AdmPwd, ms-Mcs-AdmPwdExpirationTime
 
 ##Pinvoke
 Basic Pinvoke----"""

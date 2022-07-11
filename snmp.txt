@@ -1,7 +1,8 @@
 ####SNMP Commands & Enumeration
 SNMP Get----snmpcheck -t <ip-address> -c <community-string>
 Brute Force Community String----snmpbrute -t <ip-address>
-SNMP Walk----snmpwalk -v 2C -c <community-string> <ip-address>
+Brute Force Community Strings----onesixtyone -c <community-string-file> -i <ips-file>
+SNMP Walk----snmpwalk -v1 -c <community-string> -t 10 <ip-address>
 Start TFTP Server----service atftpd start
 create GRE tunnel----"""
 	modprobe ip_gre
@@ -25,3 +26,12 @@ Setup Host to Catch GRE Tunnel----"""
 	 iptables --append FORWARD --in-interface mynet -j ACCEPT
 	 """
 View Local SNMP Secrets----cat /etc/snmp/snmpd.conf
+
+##Important MIBs
+System Processes----1.3.6.1.2.1.25.1.6.0
+Running Programs----1.3.6.1.2.1.25.4.2.1.2
+Processes Path----1.3.6.1.2.1.25.4.2.1.4
+Storage Units----1.3.6.1.2.1.25.2.3.1.4
+SoftwareName----1.3.6.1.2.1.25.6.3.1.2
+User Accounts----1.3.6.1.4.1.77.1.2.25
+TCP Local Ports----1.3.6.1.2.1.6.13.1.3

