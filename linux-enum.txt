@@ -53,6 +53,7 @@ Find Writable Directories----find / -writable -type d 2>/dev/null
 Check User Home Directories ----ls -lahR /home/
 List Cron Jobs----ls  /etc/cron* | xargs cat {}
 List Cron Jobs for Current User----crontab -l
+List Cron Jobs that Ran----grep CRON /var/log/cron.log
 Access Windows SMB Share----smb:// ip /share
 SMB Connect----smbclient -L \\RALPH -I 10.11.1.3 
 Dislay Path to Executable---which nc

