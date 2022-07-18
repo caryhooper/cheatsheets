@@ -76,24 +76,28 @@ not
 #### IF Statement
 ```
 if name == "Mary":
+print("Hello Mary")
 ```
 #### ELSE Statement
 ```
 if name == "Mary":
 	print("Hello Mary")
 else:
+print('Hi, Alice!')
 ```
 #### ELIF Statement
 ```
 if name == 'Alice':
 	print('Hi Alice')
 elif age < 12:
+print('You are not Alice, kiddo!')
 ```
 #### WHILE Loop
 ```
 spam = 0
 while spam < 5:
 	print('Hello World!')
+spam = spam + 1
 ```
 #### Break statement
 + break
@@ -107,6 +111,7 @@ while spam < 5:
 ```
 print('My name is')
 for i in range(5):
+print(f'Jimmy Five Times ({i})')
 ```
 #### Importing modules
 + import random, sys, os, math
@@ -121,6 +126,7 @@ import sys; sys.exit()
 ```
 def hello(name):
 	print(f'Hello ' + name)
+hello('h00p')
 ```
 #### Return statement
 + return
@@ -160,6 +166,7 @@ def spam(divideBy):
 	try:
 		return 42 / dividedBy
 	except ZeroDivisionError:
+print('Error: Invalid Argument')
 ```
 
 ## Lists
@@ -193,6 +200,7 @@ del my_list[1]
 #### Multiple Assignments
 ```
 cats = ['Andy', 'Betty', 'Carl']
+cat1, cat2, cat3 = cats
 ```
 #### Find Value in a List
 my_list.index('Andy') #Returns '0'
@@ -225,6 +233,7 @@ Lists are actually references to a variable (pointer).  Assigning another variab
 import copy
 spam = [1,2,3]
 cheese = copy.copy(spam)
+cheese[42]
 ```
 #### Copy module - deepcopy
 cheese = copy.deepcopy(spam)  # This also copies lists of lists.
@@ -248,6 +257,7 @@ my_dict.get('doesntexist','defaultvalue')
 #### Set a default for a value within a dict in case it doesnt exist
 ```
 spam = {'name':'Rosie','age':5}
+spam.setdefault('color','black')
 ```
 
 ## Pretty Printing
@@ -255,10 +265,12 @@ spam = {'name':'Rosie','age':5}
 #### Print dicts in a human readable manner
 ```
 import pprint
+pprint.pprint(my_dict)
 ```
 #### Alternately, preformat the dict so it can be regularly printed
 ```
 import pprint
+print(pprint.pformat(my_dict))
 ```
 
 ## Escape Characters
@@ -283,6 +295,7 @@ Eve's cat has been arrested.
 
 Sincerely,
 
+Bob''
 ```
 #### Multiline Comments
 User triple quotes by themselves to delimit multiline comments.
@@ -328,6 +341,7 @@ my_string.endswith('XYZ')
 ```
 import pyperclip
 pyperclip.copy('Hello World!)
+pyperclip.paste()
 ```
 #### Reverse a String
 my_string[::-1]
@@ -347,6 +361,7 @@ foo.split(" ")
 #### Basic Regex (phone number regex object)
 ```
 import re
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
 ```
 #### Search regex
 + mo = phoneNumRegex.search('My number is 555-555-5555.')
@@ -400,6 +415,7 @@ By default, Python uses greedy matching.  In order to use a non-greedy matching 
 #### Match the newlines with the dot character
 ```
 newlineRegex = re.compile('.*',re.DOTALL)
+newlineRegex.search('Do thing 1\nDo thing 2\n Do the Final thing\n').group()
 ```
 #### Combine newline matching, case insensitive searches, and regex comments
 val = re.compile('foo', re.IGNORECASE | re.DOTALL | re.VERBOSE)
@@ -421,6 +437,7 @@ os.path.relpath('C:\\Windows','C:\\')
 ```
 path = 'C:\\Windows\System32\\calc.exe'
 os.path.basename(path) #returns calc.exe
+os.path.dirname(path) #returns C:\\Windows\\System32
 ```
 #### Split Path based on file and dirname
 dirname,basename = os.path.split(path)
@@ -448,11 +465,13 @@ file_lines = content.readlines()
 ```
 file = open('bacon.txt','w')
 file.write('sizzzzzle...')
+file.close()
 ```
 #### Append to a file
 ```
 file = open('bacon.txt','a')
 file.write('Nothing to add...')
+file.close()
 ```
 #### Save Variables with shelve Module (import shelve)
 ```
@@ -460,12 +479,14 @@ import shelve
 shelfFile = shelve.open('mydata')
 cats = ['Al','Bert','Cindy']
 shelfFile['cats'] = cats
+shelfFile.close()
 ```
 #### Retrieve information from shelf
 ```
 shelfFile = shelve.open('mydata')
 list(shelfFile.keys())
 list(shelfFile.values())
+shelfFile.close()
 ```
 
 ## Organizing Files
@@ -489,6 +510,7 @@ send2trash.send2trash('bacon.txt') #Sends to recycle bin
 #### Walk through directory
 ```
 for folderName,subfolders,filenames in os.walk('C:\\'):
+continue
 ```
 #### Reading a ZIP file
 ```
@@ -498,6 +520,7 @@ exampleZip.namelist()
 fileInfo = exampleZip.getinfo('zippedfile.txt')
 fileInfo.file_size
 fileInfo.compress_size
+exampleZip.close()
 ```
 #### Extract ZIP
 exampleZip.extractall()
@@ -510,6 +533,7 @@ exampleZip.extract('zippedfile.txt','C:\\')
 import zipfile
 newZip = zipfile.ZipFile('new.zip','w')
 newZip.write('spam.txt', compress_type=zipfile.ZIP_DEFLATED)
+newZip.close()
 ```
 
 ## Debugging
@@ -526,6 +550,7 @@ try:
 except:
 	errorFile = open('errorInfo.txt','w')
 	errorFile.write(traceback.format_exc())
+errorFile.close()
 ```
 #### Assertions
 sanity check to make sure your code isn't doing something obviously wrong.  Performed by assert statements.
@@ -542,6 +567,7 @@ Assertions may be disabled with passing the "-0" argument to python.
 ```
 import logging
 logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
+logging.debug('Start of Program')
 ```
 #### Logging Level DEBUG
 Lowest level, used for small details.
@@ -562,17 +588,20 @@ logging.basicConfig(filename='program.log',level=logging.DEBUG, format=' %(ascti
 ------
 #### Launch a webbrowser
 import webbrowser; webbrowser.open('http://google.com')
-#### Handle an unknown number of commandline arguments#### Make a GET request to a website
+#### Handle an unknown number of commandline arguments
+#### Make a GET request to a website
 ```
 import requests
 response = requests.get('http://www.hooperlabs.xyz/robots.txt')
 if response.status_code == requests.codes.ok:
+print(f"Success! {response.status_code}")
 ```
 #### Check for error
 response.raise_for_status()
 #### Saving Response to Hard Drive
 ```
 for chunk in response.iter_content(100000):
+file.write(chunk)
 ```
 #### Parse HTML with BeautifulSoup
 soup = bs4.BeautifulSoup(response.text, 'html.parser')
@@ -592,6 +621,7 @@ spanElement.attrs
 ```
 from selenium import webdriver
 browser = webdriver.Firefox()
+browser.get('https://hooperlabs.xyz')
 ```
 #### Find elements on page by class name
 browser.find_element_by_class_name(name)
@@ -670,6 +700,7 @@ sheet.get_highest_row() | sheet.get_highest_column()
 import openpyxl
 from openpyxl.cell import get_column_letter, column_index_from_string
 get_column_letter(1)
+column_index_from_string('AA')
 ```
 #### Get Cells within a certain range
 tuple(sheet['A1':'C3'])
@@ -681,6 +712,7 @@ import openpyxl
 wb = openpyxl.Workbook()
 sheet = wb.get_active_sheet()
 sheet.title = 'My first sheet'
+wb.save('example.xlsx')
 ```
 #### Create a sheet
 wb.create_sheet(index=2, title='Middle Sheet')
@@ -690,6 +722,7 @@ from openpyxl.styles import Font, Style
 fontObj1 = Font(name='Times New Roman', bold=True)
 styleObj1 = Style(font=fontObj1)
 sheet['A1'].style/styleObj
+sheet['A1'] = 'Bold TNR'
 ```
 #### Formulas
 sheet['B9'] = '=SUM(B1:B8)'
@@ -750,6 +783,7 @@ doc.paragraphs[1].text
 ```
 doc = docx.Document
 doc.add_paragraph('Hello World!')
+doc.save('helloworld.docx')
 ```
 #### Add Heading
 doc.add_heading('Header 0',0)
@@ -770,6 +804,7 @@ reader[0][0]
 ```
 outputFile = open('output.csv','w', newline='')
 writer= csv.writer(outputFile)
+writer.writerow([1,2,3,4])
 ```
 #### Write CSV with different delimiter/lineterminator
 csvWriter = csv.writer(csfFile, delimiter='\t', lineterminator='\n\n')
@@ -798,6 +833,7 @@ import datetime
 import datetime
 datetime.datetime.now()
 dt = datetime.datetime(2015,2,27,11,10,49,55,53)
+dt.year, dt.month, dt.day
 ```
 #### Get Datetime Obj from Timestamp
 datetime.datetime.fromtimestamp(10000000)
@@ -853,6 +889,7 @@ datetime.datetime.strptime('October 21, 2015', '%B %d, %Y')
 ```
 import threading
 threadObj = threading.Thread(target=print, args=['cat','dog','monkey'],kwargs={'sep': ' & '})
+threadObj.start()
 ```
 
 ## Launching Other Programs
@@ -970,6 +1007,7 @@ twilioCli = TwilioRestClient(accountSID, authToken)
 twilioNumber = '+15555555555'
 myCellNumber = '+14444444444'
 message = twilioCli.messages.create(body='Mr. Watson - Come here - I want to see you.', from_=twilioNumber, to=myCellNumber
+updatedMessage = twilioCli.messages.get(message.sid)
 ```
 
 ## Ctypes (Local Library Functions)

@@ -227,4 +227,5 @@ public class User32{
 "@
 
 Add-Type $User32
+[User32]::MessageBox(0,"This is an alert", "MyBox", 0)
 ```

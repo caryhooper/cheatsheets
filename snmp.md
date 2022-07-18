@@ -18,6 +18,7 @@ service atftpd start
 	ip addr add 172.16.0.3/24 dev mynet
 	route add -net 172.16.0.0 netmask 255.255.255.0 dev mynet
 	ifconfig mynet up
+
 ```
 #### Redirect all traffic through GRE tunnel
 ```
@@ -28,6 +29,7 @@ service atftpd start
 	
 	 fe 1/0 (internal interface)
 	 ip policy route-map divert
+
 ```
 #### Setup Host to Catch GRE Tunnel
 ```
@@ -36,6 +38,7 @@ service atftpd start
 	 route add -net 10.200.0.0 netmask 255.255.255.0 gw 172.16.0.1
 	 iptables --table nat --append POSTROUTING --out-interface eth0 -j MASQUERADE
 	 iptables --append FORWARD --in-interface mynet -j ACCEPT
+
 ```
 #### View Local SNMP Secrets
 cat /etc/snmp/snmpd.conf

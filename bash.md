@@ -17,6 +17,7 @@ if [ $USER == 'bob' ] || [ $USER == 'andy' ]
 for i in $(cat countries.txt); do 
 	echo -n ${i:0:1} | tr '[:lower:]' '[:upper:]';
 	echo ${i:1}; 
+done >> countries.txt
 ```
 #### for loop
 for i in $(seq 1 10); do echo $i; done
@@ -35,6 +36,7 @@ then
 	echo 2; 
 else 
 	echo 3; 
+fi
 ```
 #### if directory exists
 if [ -d <directory> ];
@@ -54,6 +56,7 @@ case $1 in
 		echo restart;; 
 	*) 
 		echo no clue;; 
+esac
 ```
 #### while statements
 while [ <test> ]; do echo 1; done

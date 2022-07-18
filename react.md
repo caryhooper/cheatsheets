@@ -52,6 +52,7 @@ if(condition){
     do_thing1;
 }else{
 do_thing2;
+}
 ```
 #### Ternary Operators
 {conditional ? do_thing1 : do_thing2 }
@@ -67,6 +68,7 @@ const people = ['Abby', 'Billy', 'Charles'];
 const peopleLis = people.map((person,i) => 
   <li key={'person_' + i}>{person}</li>
 );
+ReactDOM.render(<ul>{peopleLis}</ul>,document.getElementById('app'));
 ```
 #### "React.createElement()"
 React.createElement("div",null,"Hello World");
@@ -79,6 +81,7 @@ class MyComponentClass extends React.Component{
 		return <h1>Hello world</h1>;
 	}
 };
+ReactDOM.render(<MyComponentClass />,document.getElementById('app'));
 ```
 #### Event Listener
 function (i.e. alert(){}) within class that can be called by an event handler attribute.
@@ -86,6 +89,7 @@ function (i.e. alert(){}) within class that can be called by an event handler at
 ```
 export const MyComponentClass = () => {
   return <h1>Hello world</h1>;
+}
 ```
 #### Another function component with props
 ```
@@ -95,6 +99,7 @@ export function NewFriend (props) {
         <img src={props.src} />
       </div>
     );
+}
 ```
 #### React Hooks examples
 + useState()
@@ -143,6 +148,7 @@ class Example extends React.Component {
 		this.state = { mood: 'good' };
 		this.myFunc = this.myFunc.bind(this);
 	}
+}
 ```
 #### Setting
 this.setState(); //input a state object
@@ -175,6 +181,7 @@ function makeDoggy(e) {
   // The <img> will become a picture of a doggy.
   e.target.setAttribute('src', 'https://content.codecademy.com/courses/React/react_photo-puppy.jpeg');
   e.target.setAttribute('alt', 'doggy');
+}
 ```
 #### Simple Class
 ```
@@ -191,6 +198,7 @@ export class NavBar extends React.Component {
 
     return <nav>{navLinks}</nav>;
   }
+}
 ```
 #### Clock Component
 ```
@@ -232,6 +240,7 @@ export class Clock extends React.Component {
     }, delay);
   }
 }
+
 ```
 #### Phone Number Handler Component
 ```
@@ -250,6 +259,7 @@ export default function PhoneNumber() {
       <input value={phone} onChange={handleChange} id='phone-input'/>
     </div>
   );
+}
 ```
 #### Quiz Navigation Bar Component
 ```
@@ -277,4 +287,5 @@ export default function QuizNavBar({ questions }) {
       </div>
     </nav>
   );
+}
 ```

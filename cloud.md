@@ -18,6 +18,7 @@ Once you get a shell, you can query the metadata service (in AWS).
 What are you allowed to test?
 Check each cloud provider's rules before testing.
 Refrain from: DoS, intense fuzzing, phishing cloud providers, testing other company's assets.
+Report platform vulnerabilities to cloud platforms.
 ```
 
 ## Cloud Authentication Methods
@@ -125,6 +126,7 @@ Expect: 100 continue
 Connection: close
 resource=https%3A%2F%2Fgraph.windows.net&client_id=1b730954 1685 4b74 9bfd
 dac224a7b894&client_info=1&grant_type= password&username =user%40targetdomain.com&passwor
+d=Winter2020&scope= openid
 ```
 #### Azure Password Protection
 Prevents users from picking certain words/seasons/company names.

