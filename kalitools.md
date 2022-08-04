@@ -33,6 +33,12 @@ echo -e "/mtn/webdav myUser P@ssw0rd" | tee -a /etc/davfs2/secrets
 #### Mount a VMDK File (libguestfs-tools)
 guestmount -a /path/to/test.vmdk -i --ro /mnt/diskmnt
 
+
+## CeWL
+#### Create Custom Wordlist from website
+cewl https://target.com/ -w outfile.txt -d 4 -m 7
+
+
 ## Curl
 ------
 #### PUT a file with NTLM Auth

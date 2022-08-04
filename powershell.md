@@ -190,7 +190,7 @@ Get-WinEvent -LogName Microsoft-Windows-Sysmon/Operational -MaxEvents 5
 #### List Environment Variables
 Get-ChildItem Env:
 #### List $PATH Environment Variable
-(gci env:PATH).value.replace(";","`n")
+(gci env:PATH).value.replace(";","\`n")
 #### Quickly list out numbers
 1..255
 #### List Properties of a Registry Key
@@ -204,7 +204,12 @@ Get-ChildItem . -Recurse -ErrorAction Silentlycontinue | Select-String -Pattern 
 #### List loaded assemblies in current process
 [appdomain]::currentdomain.getassemblies() | so -Property fullname | ft fullname
 #### Find Files with Insecure Permissions
-Get-ChildItem "C:\Program Files" -Recurse | Get-ACL | ?{$_.AccessToString -match "Everyone\sAllow\s\sModify"}
+Get-ChildItem "C:\Program Files" -Recurse | Get-ACL | ?{$\_.AccessToString -match "Everyone\sAllow\s\sModify"}
+
+#### Set System Environment Variables
+\[System.Environment\]::SetEnvironmentVariable($varName, $varValue, [System.EnvironmentVariableTarget]::Machine)
+
+
 
 ## AD
 ------
