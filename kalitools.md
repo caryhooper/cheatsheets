@@ -18,8 +18,10 @@ host -l domain namesvr
 rdesktop -u offsec -p password <ip-address> -r disk:home=/root
 #### RDesktop (xfreerdp w/ clipboard)
 xfreerdp /clipboard /v:mycomputer.mydomain.local /port:3389 /u:myuser /d:mydomain.local /p:mypass /size:1600*1000
-#### Desktop (mount shared folder)
+#### RDesktop (mount shared folder)
 rdesktop -u offsec -p password <ip-address> -r disk:home=/root
+#### RDesktop (pass the hash)
+xfreerdp /u:uffsec /d:win2012 /pth:--HASH-- /v:10.1.1.1
 #### Debian (Kali) Network Manager
 nmtui
 #### Run JS from Command Line
