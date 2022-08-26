@@ -148,6 +148,8 @@ unzip scripts.zip
 tar xvzf tarball.tar.gz
 #### Pack a Tar Archive
 tar cvf tarball.tar files/*
+#### Run a Program Detatched from Shell
+screen -d -m /path/to/file.elf
 
 ## Privesc Scripts
 ------

@@ -36,6 +36,13 @@ adb connect 192.168.0.28:5555
 adb shell
 #### Drop Shell on an emulated system
 adb -s 192.168.0.165:5555 shell
+#### View Android Logs
+adb logcat
+####
+
+
+
+
 #### Install Burp Certificate in Browser
 
 #### Trusted Cert Location
@@ -116,6 +123,10 @@ frida -D 192.168.0.165:5555 -l .\fridademo-pinBypass.txt infosecadventures.frida
 frida-trace -D <device> -p <pid> -i "libfoo.so!"
 #### frida-trace (trace calls to a library)
 frida-trace -D <device> -p <pid> -i "Java_*""
+#### Attach to Frida process and enumerate exports
++ frida -r process.exe
++ Module.enumerateExports("foobar.dll")
+
 
 ## Objection
 ------

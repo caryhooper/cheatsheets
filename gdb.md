@@ -11,16 +11,16 @@ Break when the program enters main()
 List functions within binary
 #### x/50i <function>
 lists the first 50 instructions of a function.
-#### b *0x4006f3
+#### b \*0x4006f3
 create breakpoint at memory address
 #### si
 (unk)
 #### pattern_create
 invokes ruby "pattern_create" module
 #### Set Arguments
-set args $(python -c 'print("\x41"*120')
+set args $(python -c 'print("\x41"\*120')
 #### Set Environment Variable
-set env $(python -c 'print("\x41"*120')
+set env $(python -c 'print("\x41"\*120')
 #### View Core Dump in GDB
 gdb -q -c core
 #### Change from ATT to Intel Syntax
@@ -40,7 +40,7 @@ c (or continue)
 #### Step One Instruction
 si
 #### Create Break Point At Address
-break *0x07048524
+break \*0x07048524
 #### Run GDB with No Extensions
 gdb --nex ./file
 #### List all Functions
@@ -66,7 +66,7 @@ del breakpoint
 #### View 10 words in hex at a memory location
 x/10wx 0xdeadbeef
 #### Breakpoint on a Relative Memory location
-break *main+39
+break \*main+39
 #### Examine next 16 instructions
 x/16i $eip
 #### Custom Arguments
@@ -80,7 +80,9 @@ x/40wx $esp-0x268
 #### Find memory address of LibC function
 print system
 #### Set a Relative Breakpoint to a Function
-break * functionname+60
+break \* functionname+60
+#### Open a Shared Object (.so) File
+
 
 ## objdump
 ------

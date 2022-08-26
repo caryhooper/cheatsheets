@@ -187,6 +187,8 @@ wmic nic list brief
 wmic product get name,version,vendor
 #### Control Output of wmic Command
 wmic process get name,processid
+#### Start a Program
+wmic /node:localhost process call create 'C:\file.exe'
 #### Close a Program
 wmic process where processid="1000" call terminate
 #### Close a Remote Program
@@ -197,6 +199,10 @@ wmic /node:localhost /user:rambo /password:FirstBl00dPart3 process where name="p
 wmic /Node:%%A LogicalDisk Where DriveType="3" Get DeviceID,FileSystem,FreeSpace,Size /Format:csv MORE /E +2 >> SRVSPACE.CSV
 #### List all Shares
 wmic logicaldisk get name,providername
+#### List all Shares
+new view \\\\COMPUTERNAME
+#### Mount a CIFS Share
+net use Z: \\HOSTNAME\SHARE /PERSISTENT:YES
 #### List Startup Processes
 wmic startup get caption,command,user
 #### Run wmic Remotely
@@ -232,6 +238,9 @@ net group /domain
 +  $pdc = ($domain.PdcRoleOwner).Name
 +  $dn = $domain.Name.Replace('.',',DC=')
 +  $searchstr = "ldap://" + $pdc + "/Dc=" + $dn 
+#### Create Domain User
+net users h00p password /add /domain
+net group "Domain Admins" h00p /add /domain
 
 #### Search AD
 $ldapsearch = New-Object System.DirectoryServices.DirectorySearcher([ADSI]$searchstr); $objDomain = New-Object System.DirectoryServices.DirectoryEntry; $ldapsearch.SearchRoot = $objDomain; $ldapsearch.filter="samAccountType=805306368"; $ldapsearch.FindAll();
